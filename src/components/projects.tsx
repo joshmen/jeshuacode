@@ -1,143 +1,107 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { useLanguage } from "@/lib/language-context";
+import SectionHead from "./section-head";
 
-const techTags = [
-  "React Native",
-  "Expo",
-  ".NET 9",
-  "PostgreSQL",
-  "Stripe Connect",
-  "Azure",
-];
+const FEAT_TAGS = ["React Native", ".NET 9", "PostgreSQL", "Stripe Connect", "Azure"];
 
-export function Projects() {
+export default function Projects() {
+  const { t } = useLanguage();
+
   return (
-    <section id="proyectos" className="px-6 py-24 lg:px-20">
-      <div className="mx-auto max-w-7xl">
+    <section id="proyectos" className="bg-surface py-20 md:py-28">
+      <div className="mx-auto max-w-[1200px] px-5 md:px-10">
+        <SectionHead eyebrow={t.projEy} title={t.projTitle} sub={t.projSub} />
+
         <motion.div
-          variants={staggerContainer}
+          variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="flex flex-col items-center text-center"
+          viewport={{ once: true, margin: "-80px" }}
+          className="mt-13 grid items-center gap-11 rounded-3xl border border-line bg-white p-6 md:p-11 lg:grid-cols-[1fr_1.05fr]"
         >
-          <motion.span
-            variants={fadeInUp}
-            className="text-[13px] font-semibold uppercase tracking-wider text-accent"
-          >
-            Proyectos
-          </motion.span>
-          <motion.h2
-            variants={fadeInUp}
-            className="mt-3 text-3xl font-bold tracking-tight text-text-primary sm:text-4xl"
-            style={{ letterSpacing: "-0.02em" }}
-          >
-            Lo que hemos construido
-          </motion.h2>
+          <div>
+            <div className="inline-flex items-center gap-[7px] rounded-full bg-[#E7F8F0] px-[13px] py-1.5 text-[12.5px] font-extrabold text-success">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#4ADE80]" />
+              {t.featBadge}
+            </div>
+            <div className="mt-4 text-[28px] font-extrabold tracking-[-0.02em] md:text-[34px]">
+              {t.featName}
+            </div>
+            <div className="mt-1 text-[15px] font-bold text-accent">{t.featTag}</div>
+            <div className="mt-4 text-base font-medium leading-relaxed text-muted">
+              {t.featDesc}
+            </div>
+            <div className="mt-6 flex flex-wrap gap-[9px]">
+              {FEAT_TAGS.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-lg border border-line bg-[#F2F4F7] px-3 py-1.5 text-[12.5px] font-bold text-[#344054]"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="relative h-[240px] overflow-hidden rounded-2xl bg-[#F2F4F7] md:h-[346px]">
+            <Image
+              src="/images/handysales-crm.jpg"
+              alt="Dashboard de Handy Sales CRM"
+              fill
+              className="object-cover"
+            />
+          </div>
         </motion.div>
 
         <motion.div
+          variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-          className="mt-16"
+          viewport={{ once: true, margin: "-80px" }}
+          className="mt-6 grid gap-6 md:grid-cols-2"
         >
-          {/* DeliveryGo Project Card */}
           <motion.div
             variants={fadeInUp}
-            className="overflow-hidden rounded-2xl border border-border"
+            className="overflow-hidden rounded-[20px] border border-line bg-white transition-all duration-200 hover:border-[#B9D2FF] hover:shadow-[0_14px_34px_rgba(0,97,254,.09)]"
           >
-            <div className="flex flex-col items-center gap-8 p-8 lg:flex-row lg:p-10">
-              {/* Logo solo en móvil (arriba del video) */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/deliverygo-logo-pin.png"
-                alt="DeliveryGo Logo"
-                className="order-1 h-48 w-auto object-contain lg:hidden"
+            <div className="relative h-[196px] bg-[#F2F4F7]">
+              <Image
+                src="/images/jeyma-site.jpg"
+                alt="Sitio de Productos Caseros Jeyma"
+                fill
+                className="object-cover"
               />
-              {/* DeliveryGo Video */}
-              <div className="order-2 w-full overflow-hidden rounded-xl border border-border bg-gradient-to-br from-gray-50 to-white lg:order-1 lg:w-1/2">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="h-auto w-full object-cover"
-                >
-                  <source src="/images/deliverygo-video.mp4" type="video/mp4" />
-                </video>
+            </div>
+            <div className="px-7 pb-[30px] pt-[26px]">
+              <span className="inline-flex rounded-full bg-[#FEF0C7] px-[11px] py-[5px] text-xs font-extrabold text-[#B54708]">
+                {t.proj2Badge}
+              </span>
+              <div className="mt-3.5 text-[21px] font-extrabold tracking-[-0.01em]">
+                {t.proj2Name}
               </div>
-              {/* Logo + Info (desktop: logo visible, móvil: solo info) */}
-              <div className="order-3 flex w-full flex-col gap-4 lg:order-2 lg:w-1/2">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/deliverygo-logo-pin.png"
-                  alt="DeliveryGo Logo"
-                  className="hidden h-48 w-auto object-contain lg:block"
-                />
-                <div className="flex items-start justify-between">
-                  <div>
-                    <p className="text-sm text-text-secondary">
-                      Plataforma de delivery multi-tenant
-                    </p>
-                  </div>
-                  <span className="rounded-full bg-accent-light px-3 py-1 text-xs font-medium text-accent">
-                    En desarrollo
-                  </span>
-                </div>
-                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-text-secondary">
-                  App completa de delivery con tres roles: clientes, repartidores y
-                  dueños de tienda. Incluye pagos con Stripe Connect, backoffice
-                  administrativo, y gestión de órdenes en tiempo real.
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {techTags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-md border border-border bg-bg-surface px-3 py-1 text-xs font-medium text-text-secondary"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+              <div className="mt-[9px] text-[15px] font-medium leading-relaxed text-muted">
+                {t.proj2Desc}
               </div>
             </div>
           </motion.div>
 
-          {/* Placeholder row for future projects */}
           <motion.div
             variants={fadeInUp}
-            className="mt-5 grid gap-5 sm:grid-cols-2"
+            className="flex flex-col items-start justify-center rounded-[20px] bg-gradient-to-br from-accent to-[#0043B3] p-[38px] text-white"
           >
-            {[
-              {
-                title: "Próximo proyecto",
-                desc: "E-commerce con IA generativa",
-              },
-              { title: "Próximo proyecto", desc: "Dashboard analytics SaaS" },
-            ].map((p, i) => (
-              <div
-                key={i}
-                className="group flex items-center justify-between rounded-xl border border-dashed border-border p-6 transition-colors hover:border-accent/40"
-              >
-                <div>
-                  <p className="text-sm font-medium text-text-secondary">
-                    {p.title}
-                  </p>
-                  <p className="mt-0.5 text-xs text-text-secondary/60">
-                    {p.desc}
-                  </p>
-                </div>
-                <ExternalLink
-                  size={16}
-                  className="text-text-secondary/40 transition-colors group-hover:text-accent"
-                />
-              </div>
-            ))}
+            <div className="text-2xl font-extrabold tracking-[-0.015em]">{t.proj3Name}</div>
+            <div className="mb-[22px] mt-[11px] text-[15.5px] font-medium leading-relaxed text-white/85">
+              {t.proj3Desc}
+            </div>
+            <a
+              href="#contacto"
+              className="inline-flex items-center gap-[9px] whitespace-nowrap rounded-[11px] bg-white px-[22px] py-[13px] text-[15px] font-bold leading-none text-ink transition-all hover:bg-accent-light"
+            >
+              {t.proj3Cta} →
+            </a>
           </motion.div>
         </motion.div>
       </div>

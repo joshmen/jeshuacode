@@ -1,29 +1,32 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Archivo } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const archivo = Archivo({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-archivo",
 });
 
 export const metadata: Metadata = {
-  title: "JeShua Code | Consultoría Tecnológica & Desarrollo de Software",
+  title: "JeShua Code | Construimos el software que tu negocio necesita",
   description:
-    "Creamos software que transforma negocios. Consultoría tecnológica y desarrollo a medida con React Native, .NET, Azure y más.",
+    "Consultoría y desarrollo a medida: páginas web, bots de atención, apps móviles y sistemas listos para producción.",
   keywords: [
     "desarrollo de software",
     "consultoría tecnológica",
+    "páginas web",
+    "bots de WhatsApp",
+    "apps móviles",
     "React Native",
     ".NET",
     "Azure",
     "SaaS",
-    "apps móviles",
   ],
   openGraph: {
-    title: "JeShua Code | Consultoría Tecnológica & Desarrollo de Software",
+    title: "JeShua Code | Construimos el software que tu negocio necesita",
     description:
-      "Creamos software que transforma negocios. Desde la idea hasta producción.",
+      "Consultoría y desarrollo a medida: páginas web, bots de atención, apps móviles y sistemas listos para producción.",
     type: "website",
   },
 };
@@ -34,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={inter.variable}>
+    <html lang="es" className={archivo.variable}>
       <body className="font-sans antialiased">{children}</body>
     </html>
   );

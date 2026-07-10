@@ -1,94 +1,99 @@
-import { Linkedin, Github, Twitter, Mail } from "lucide-react";
+"use client";
 
-const footerLinks = {
-  servicios: [
-    "Desarrollo de Apps",
-    "Consultoría Tech",
-    "Soluciones SaaS",
-    "Cloud & DevOps",
-  ],
-  empresa: ["Nosotros", "Proyectos", "Contacto", "Blog"],
-};
+import { Linkedin, Github, Mail } from "lucide-react";
+import { useLanguage } from "@/lib/language-context";
+import { CONTACT_EMAIL } from "@/lib/i18n";
 
-const socialLinks = [
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Mail, href: "mailto:contacto@jeshuacode.com", label: "Email" },
-];
+export default function Footer() {
+  const { t } = useLanguage();
 
-export function Footer() {
+  const socials = [
+    { icon: Linkedin, href: "#", label: "LinkedIn" },
+    { icon: Github, href: "#", label: "GitHub" },
+    { icon: Mail, href: `mailto:${CONTACT_EMAIL}`, label: "Email" },
+  ];
+
   return (
-    <footer className="border-t border-border">
-      <div className="mx-auto max-w-7xl px-6 py-12 lg:px-20">
-        <div className="flex flex-col justify-between gap-10 md:flex-row">
-          {/* Brand */}
-          <div className="max-w-xs">
-            <a href="#" className="flex items-center">
-              <img
-                src="/images/logo-transparente.png"
-                alt="Jeshua Software"
-                className="h-10 w-auto"
-              />
+    <footer className="bg-ink pb-10 pt-[76px] text-white">
+      <div className="mx-auto max-w-[1200px] px-5 md:px-10">
+        <div className="grid gap-10 md:grid-cols-[1.7fr_1fr_1fr_1fr]">
+          <div>
+            <a href="#top" className="flex items-center gap-[11px] text-xl font-extrabold tracking-[-0.02em]">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[9px] bg-accent text-sm font-black tracking-[-0.03em] text-white">
+                JS
+              </span>
+              JeShua Code
             </a>
-            <p className="mt-3 text-[13px] leading-relaxed text-text-secondary">
-              Consultoría tecnológica y desarrollo de software a medida.
-            </p>
+            <div className="mt-4 max-w-[30ch] text-[14.5px] font-medium leading-relaxed text-white/55">
+              {t.footTag}
+            </div>
           </div>
 
-          {/* Links */}
-          <div className="flex gap-16">
-            <div>
-              <h4 className="text-[13px] font-semibold text-text-primary">
-                Servicios
-              </h4>
-              <ul className="mt-3 space-y-2.5">
-                {footerLinks.servicios.map((link) => (
-                  <li key={link}>
-                    <a
-                      href="#servicios"
-                      className="text-[13px] text-text-secondary transition-colors hover:text-text-primary"
-                    >
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+          <div>
+            <div className="text-[13px] font-extrabold uppercase tracking-[0.06em] text-white/50">
+              {t.navServ}
             </div>
-            <div>
-              <h4 className="text-[13px] font-semibold text-text-primary">
-                Empresa
-              </h4>
-              <ul className="mt-3 space-y-2.5">
-                {footerLinks.empresa.map((link) => (
-                  <li key={link}>
-                    <a
-                      href={`#${link.toLowerCase()}`}
-                      className="text-[13px] text-text-secondary transition-colors hover:text-text-primary"
-                    >
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+            <ul className="mt-[18px] flex flex-col gap-3">
+              {[t.svc1t, t.svc2t, t.svc3t, t.svc6t].map((s) => (
+                <li key={s}>
+                  <a href="#servicios" className="text-[14.5px] font-medium text-white/82 hover:text-white">
+                    {s}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <div className="text-[13px] font-extrabold uppercase tracking-[0.06em] text-white/50">
+              {t.footComp}
             </div>
+            <ul className="mt-[18px] flex flex-col gap-3">
+              {[
+                { href: "#proceso", label: t.navProc },
+                { href: "#proyectos", label: t.navProy },
+                { href: "#precios", label: t.navPre },
+                { href: "#contacto", label: t.navCont },
+              ].map((l) => (
+                <li key={l.href}>
+                  <a href={l.href} className="text-[14.5px] font-medium text-white/82 hover:text-white">
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <div className="text-[13px] font-extrabold uppercase tracking-[0.06em] text-white/50">
+              {t.footLegal}
+            </div>
+            <ul className="mt-[18px] flex flex-col gap-3">
+              <li>
+                <a href="#" className="text-[14.5px] font-medium text-white/82 hover:text-white">
+                  {t.footPriv}
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[14.5px] font-medium text-white/82 hover:text-white">
+                  {t.footTerms}
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 sm:flex-row">
-          <p className="text-[13px] text-text-secondary">
-            &copy; 2026 Jeshua Software. Todos los derechos reservados.
-          </p>
-          <div className="flex gap-4">
-            {socialLinks.map((social) => (
+        <div className="mt-[60px] flex flex-wrap items-center justify-between gap-5 border-t border-white/10 pt-7">
+          <div className="text-[13.5px] font-medium text-white/50">{t.footRights}</div>
+          <div className="flex gap-3">
+            {socials.map((s) => (
               <a
-                key={social.label}
-                href={social.href}
-                aria-label={social.label}
-                className="text-text-secondary transition-colors hover:text-text-primary"
+                key={s.label}
+                href={s.href}
+                aria-label={s.label}
+                className="flex h-[38px] w-[38px] items-center justify-center rounded-[10px] bg-white/8 text-white transition-all hover:bg-accent"
               >
-                <social.icon size={18} />
+                <s.icon size={18} />
               </a>
             ))}
           </div>

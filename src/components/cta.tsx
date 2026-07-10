@@ -1,52 +1,43 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { fadeInUp } from "@/lib/animations";
+import { useLanguage } from "@/lib/language-context";
+import { WHATSAPP_URL } from "@/lib/i18n";
 
-export function CTA() {
+export default function Cta() {
+  const { t } = useLanguage();
+
   return (
-    <section id="contacto" className="px-6 py-24 lg:px-20">
-      <div className="mx-auto max-w-7xl">
+    <section className="bg-ink py-20 text-white md:py-28">
+      <div className="mx-auto max-w-[1200px] px-5 md:px-10">
         <motion.div
-          variants={staggerContainer}
+          variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="flex flex-col items-center rounded-2xl bg-text-primary p-16 text-center lg:p-20"
+          viewport={{ once: true, margin: "-80px" }}
+          className="mx-auto max-w-[740px] text-center"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="max-w-lg text-3xl font-bold tracking-tight text-white sm:text-4xl"
-            style={{ letterSpacing: "-0.02em" }}
-          >
-            Transformemos tu idea en software
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="mt-4 max-w-md text-base leading-relaxed text-[#B0B0B0]"
-          >
-            Agenda una llamada sin compromiso. Hablemos de tu proyecto y cómo
-            hacerlo realidad.
-          </motion.p>
-          <motion.a
-            variants={fadeInUp}
-            href="mailto:contacto@jeshuacode.com"
-            className="group mt-8 flex items-center gap-2 rounded-lg bg-accent px-8 py-3.5 text-sm font-medium text-white transition-all hover:bg-accent/90"
-          >
-            Agenda tu consulta
-            <ArrowRight
-              size={16}
-              className="transition-transform group-hover:translate-x-0.5"
-            />
-          </motion.a>
-          <motion.p
-            variants={fadeInUp}
-            className="mt-4 text-[13px] text-[#7A7A7A]"
-          >
-            Sin compromisos &middot; Respuesta en 24h &middot; 100%
-            confidencial
-          </motion.p>
+          <h2 className="text-[36px] font-extrabold leading-[1.05] tracking-[-0.03em] md:text-[52px]">
+            {t.ctaTitle}
+          </h2>
+          <p className="mt-5 text-[19px] font-medium leading-normal text-white/62">{t.ctaSub}</p>
+          <div className="mt-[38px] flex flex-wrap justify-center gap-4">
+            <a
+              href="#contacto"
+              className="inline-flex items-center gap-[9px] whitespace-nowrap rounded-[11px] bg-accent px-7 py-4 text-base font-bold leading-none text-white transition-all hover:-translate-y-px hover:bg-accent-hover"
+            >
+              {t.ctaBtn} →
+            </a>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center whitespace-nowrap rounded-[11px] border border-white/22 bg-white/8 px-7 py-4 text-base font-bold leading-none text-white transition-all hover:bg-white/14"
+            >
+              {t.ctaWa}
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>
