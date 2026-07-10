@@ -1,0 +1,20 @@
+{
+  "version": "2.6",
+  "children": [
+    {
+      "type": "frame",
+      "id": "VsvsU",
+      "x": 100,
+      "y": 100,
+      "name": "Logo Principal — Jeshua Software",
+      "width": 1400,
+      "height": 700,
+      "fill": {
+        "type": "image",
+        "enabled": true,
+        "url": "./images/generated-1770744544412.png",
+        "mode": "fill"
+      }
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "version": "2.6",
+  "children": [
+    {
+      "type": "frame",
+      "id": "P9ZdA",
+      "x": 0,
+      "y": 0,
+      "name": "Jeshua Software — Landing Page",
+      "width": 1440,
+      "fill": "#FFFFFF",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "7sjNS",
+          "name": "header",
+          "width": "fill_container",
+          "height": 80,
+          "stroke": {
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "#E8E8E8"
+          },
+          "padding": [
+            0,
+            80
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "YCUzR",
+              "name": "logoImg",
+              "width": 280,
+              "height": 56,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "./images/jeshua-software-logo.png",
+                "mode": "fill"
+              }
+            },
+            {
+              "type": "frame",
+              "id": "lXmQl",
+              "name": "nav",
+              "gap": 36,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "6iGRu",
+                  "name": "n1",
+                  "fill": "#7A7A7A",
+                  "content": "Servicios",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "YUSIh",
+                  "name": "n2",
+                  "fill": "#7A7A7A",
+                  "content": "Proyectos",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "yFBlI",
+                  "name": "n3",
+                  "fill": "#7A7A7A",
+                  "content": "Nosotros",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "3wPca",
+                  "name": "n4",
+                  "fill": "#7A7A7A",
+                  "content": "Contacto",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "rOk6y",
+                  "name": "ctaBtn",
+                  "fill": "#0D0D0D",
+                  "cornerRadius": 8,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "T1KI7",
+                      "name": "ctaTxt",
+                      "fill": "#FFFFFF",
+                      "content": "Hablar con ventas",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
