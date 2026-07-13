@@ -1,95 +1,54 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Smartphone, Brain, Layers, Cloud } from "lucide-react";
+import { Monitor, Bot, Smartphone, Layers, Lightbulb, Cloud } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { useLanguage } from "@/lib/language-context";
+import SectionHead from "./section-head";
 
-const services = [
-  {
-    icon: Smartphone,
-    title: "Desarrollo de Apps",
-    description:
-      "Apps móviles y web con React Native, Next.js y .NET. Experiencias nativas multiplataforma.",
-  },
-  {
-    icon: Brain,
-    title: "Consultoría Tech",
-    description:
-      "Arquitectura de software, selección de stack, roadmap técnico y auditorías de código.",
-  },
-  {
-    icon: Layers,
-    title: "Soluciones SaaS",
-    description:
-      "Plataformas multi-tenant, integraciones con APIs de terceros, pasarelas de pago.",
-  },
-  {
-    icon: Cloud,
-    title: "Cloud & DevOps",
-    description:
-      "Azure, CI/CD, infraestructura escalable, monitoreo y despliegue automatizado.",
-  },
-];
+const ICONS = [Monitor, Bot, Smartphone, Layers, Lightbulb, Cloud];
 
-export function Services() {
+export default function Services() {
+  const { t } = useLanguage();
+
+  const cards = [
+    { title: t.svc1t, desc: t.svc1d },
+    { title: t.svc2t, desc: t.svc2d },
+    { title: t.svc3t, desc: t.svc3d },
+    { title: t.svc4t, desc: t.svc4d },
+    { title: t.svc5t, desc: t.svc5d },
+    { title: t.svc6t, desc: t.svc6d },
+  ];
+
   return (
-    <section
-      id="servicios"
-      className="bg-bg-surface px-6 py-24 lg:px-20"
-    >
-      <div className="mx-auto max-w-7xl">
+    <section id="servicios" className="bg-surface py-20 md:py-28">
+      <div className="mx-auto max-w-[1200px] px-5 md:px-10">
+        <SectionHead eyebrow={t.servEy} title={t.servTitle} sub={t.servSub} />
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="flex flex-col items-center text-center"
+          viewport={{ once: true, margin: "-80px" }}
+          className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
-          <motion.span
-            variants={fadeInUp}
-            className="text-[13px] font-semibold uppercase tracking-wider text-accent"
-          >
-            Servicios
-          </motion.span>
-          <motion.h2
-            variants={fadeInUp}
-            className="mt-3 text-3xl font-bold tracking-tight text-text-primary sm:text-4xl"
-            style={{ letterSpacing: "-0.02em" }}
-          >
-            Todo lo que necesitas para lanzar tu producto
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="mt-3 text-base text-text-secondary"
-          >
-            Desde la consultoría inicial hasta el despliegue en producción.
-          </motion.p>
-        </motion.div>
-
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
-        >
-          {services.map((svc) => (
-            <motion.div
-              key={svc.title}
-              variants={fadeInUp}
-              className="group rounded-xl border border-border bg-bg-primary p-7 transition-all hover:border-accent/30 hover:shadow-sm"
-            >
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent-light text-accent transition-colors group-hover:bg-accent group-hover:text-white">
-                <svc.icon size={20} />
-              </div>
-              <h3 className="mt-5 text-base font-semibold text-text-primary">
-                {svc.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-text-secondary">
-                {svc.description}
-              </p>
-            </motion.div>
-          ))}
+          {cards.map((card, i) => {
+            const Icon = ICONS[i];
+            return (
+              <motion.div
+                key={card.title}
+                variants={fadeInUp}
+                className="rounded-[18px] border border-line bg-white px-[30px] py-8 transition-all duration-200 hover:-translate-y-[3px] hover:border-[#B9D2FF] hover:shadow-[0_14px_34px_rgba(0,97,254,.1)]"
+              >
+                <div className="mb-[22px] flex h-[52px] w-[52px] items-center justify-center rounded-[13px] bg-accent-light text-accent">
+                  <Icon size={26} strokeWidth={1.8} />
+                </div>
+                <div className="text-xl font-extrabold tracking-[-0.01em]">{card.title}</div>
+                <div className="mt-2.5 text-[15px] font-medium leading-relaxed text-muted">
+                  {card.desc}
+                </div>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

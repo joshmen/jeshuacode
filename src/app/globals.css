@@ -1,32 +1,36 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-bg-primary: #FFFFFF;
-  --color-bg-surface: #FAFAFA;
-  --color-text-primary: #0D0D0D;
-  --color-text-secondary: #7A7A7A;
-  --color-accent: #4F46E5;
-  --color-accent-light: #EEF2FF;
-  --color-border: #E8E8E8;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-accent: #4285F4;
+  --color-accent-hover: #3367D6;
+  --color-accent-light: #E8F0FE;
+  --color-brand-yellow: #FBBC04;
+  --color-brand-yellow-hover: #E5A800;
+  --color-navy: #2A3350;
+  --color-ink: #0A0A0A;
+  --color-foreground: #101828;
+  --color-muted: #475467;
+  --color-faint: #667085;
+  --color-surface: #F6F7F9;
+  --color-line: #EAECF0;
+  --color-success: #12B76A;
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Logo header - responsive clip */
-.header-logo {
-  clip-path: inset(0 0 30px 0);
-}
-@media (min-width: 768px) {
-  .header-logo {
-    clip-path: inset(0 0 45px 0);
-  }
+body {
+  background: #ffffff;
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
 }
 
-body {
-  background: var(--color-bg-primary);
-  color: var(--color-text-primary);
-  font-family: var(--font-sans);
+.btn-primary {
+  background: var(--color-brand-yellow);
+  color: var(--color-navy);
+}
+.btn-primary:hover {
+  background: var(--color-brand-yellow-hover);
 }
