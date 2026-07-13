@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { fadeInUp } from "@/lib/animations";
 import { useLanguage } from "@/lib/language-context";
 import { WHATSAPP_URL } from "@/lib/i18n";
+import { fbqTrack } from "@/lib/fbq";
 
 export default function Cta() {
   const { t } = useLanguage();
@@ -33,6 +34,7 @@ export default function Cta() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => fbqTrack("Contact")}
               className="inline-flex items-center whitespace-nowrap rounded-[11px] border border-white/22 bg-white/8 px-7 py-4 text-base font-bold leading-none text-white transition-all hover:bg-white/14"
             >
               {t.ctaWa}

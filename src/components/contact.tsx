@@ -4,6 +4,7 @@ import { useState, type FormEvent } from "react";
 import { MessageCircle } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 import { WHATSAPP_URL } from "@/lib/i18n";
+import { fbqTrack } from "@/lib/fbq";
 import SectionHead from "./section-head";
 
 const inputCls =
@@ -13,9 +14,32 @@ export default function Contact() {
   const { t } = useLanguage();
   const [sent, setSent] = useState(false);
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const eventId =
+      typeof crypto !== "undefined" && "randomUUID" in crypto
+        ? crypto.randomUUID()
+        : String(Date.now());
+    const payload = {
+      name: String(data.get("name") ?? ""),
+      email: String(data.get("email") ?? ""),
+      company: String(data.get("company") ?? ""),
+      message: String(data.get("message") ?? ""),
+      event_id: eventId,
+    };
     setSent(true);
+    fbqTrack("Lead", {}, { eventID: eventId });
+    try {
+      await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+    } catch {
+      // el usuario ya vio confirmación; el lead viaja best-effort
+    }
   };
 
   const methods = [
