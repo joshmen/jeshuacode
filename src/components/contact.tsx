@@ -106,6 +106,7 @@ export default function Contact() {
                 href={m.href}
                 target={m.href.startsWith("http") ? "_blank" : undefined}
                 rel={m.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                onClick={() => fbqTrack("Contact")}
                 className="mb-3.5 flex items-center gap-[15px] rounded-[14px] border border-line p-5 transition-all hover:border-[#B9D2FF] hover:bg-[#F8FAFF]"
               >
                 <div className="flex h-[46px] w-[46px] shrink-0 items-center justify-center rounded-xl bg-accent-light text-accent">

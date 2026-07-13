@@ -53,7 +53,7 @@ export default function Pricing() {
               </ul>
               <a
                 href="#contacto"
-                className="mt-[30px] inline-flex w-full items-center justify-center whitespace-nowrap rounded-[11px] bg-accent px-[22px] py-[13px] text-[15px] font-bold leading-none text-white transition-all hover:-translate-y-px hover:bg-accent-hover"
+                className="mt-[30px] inline-flex w-full items-center justify-center whitespace-nowrap rounded-[11px] btn-primary px-[22px] py-[13px] text-[15px] font-bold leading-none transition-all hover:-translate-y-px"
               >
                 {plan.cta}
               </a>
