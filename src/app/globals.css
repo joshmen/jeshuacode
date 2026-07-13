@@ -1,9 +1,12 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-accent: #0061FE;
-  --color-accent-hover: #0053D6;
-  --color-accent-light: #EAF1FF;
+  --color-accent: #4285F4;
+  --color-accent-hover: #3367D6;
+  --color-accent-light: #E8F0FE;
+  --color-brand-yellow: #FBBC04;
+  --color-brand-yellow-hover: #E5A800;
+  --color-navy: #2A3350;
   --color-ink: #0A0A0A;
   --color-foreground: #101828;
   --color-muted: #475467;
@@ -11,7 +14,7 @@
   --color-surface: #F6F7F9;
   --color-line: #EAECF0;
   --color-success: #12B76A;
-  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
@@ -22,4 +25,12 @@ body {
   background: #ffffff;
   color: var(--color-foreground);
   font-family: var(--font-sans);
+}
+
+.btn-primary {
+  background: var(--color-brand-yellow);
+  color: var(--color-navy);
+}
+.btn-primary:hover {
+  background: var(--color-brand-yellow-hover);
 }
