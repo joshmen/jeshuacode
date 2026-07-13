@@ -7,7 +7,6 @@ import Trust from "@/components/trust";
 import Services from "@/components/services";
 import Process from "@/components/process";
 import Projects from "@/components/projects";
-import Testimonials from "@/components/testimonials";
 import Pricing from "@/components/pricing";
 import Faq from "@/components/faq";
 import Cta from "@/components/cta";
@@ -24,7 +23,6 @@ export default function Home() {
         <Services />
         <Process />
         <Projects />
-        <Testimonials />
         <Pricing />
         <Faq />
         <Cta />

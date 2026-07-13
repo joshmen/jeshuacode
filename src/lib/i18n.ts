@@ -473,6 +473,6 @@ const EN: Dict = {
 
 export const dictionaries: Record<Lang, Dict> = { es: ES, en: EN };
 
-export const WHATSAPP_URL = "https://wa.me/5210000000000";
-export const CALENDLY_URL = "https://calendly.com/jeshuacode";
-export const CONTACT_EMAIL = "contacto@jeshuacode.com";
+export const WHATSAPP_URL =
+  "https://wa.me/526681396431?text=" +
+  encodeURIComponent("Hola, quiero cotizar un proyecto con Jeshua Software.");

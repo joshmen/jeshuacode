@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { Mail, MessageCircle, Calendar } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
-import { WHATSAPP_URL, CALENDLY_URL, CONTACT_EMAIL } from "@/lib/i18n";
+import { WHATSAPP_URL } from "@/lib/i18n";
 import SectionHead from "./section-head";
 
 const inputCls =
@@ -19,9 +19,12 @@ export default function Contact() {
   };
 
   const methods = [
-    { icon: Mail, label: t.methodEmail, value: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
-    { icon: MessageCircle, label: "WhatsApp", value: `+52 · ${t.methodWa}`, href: WHATSAPP_URL },
-    { icon: Calendar, label: t.methodCal, value: "Calendly", href: CALENDLY_URL },
+    {
+      icon: MessageCircle,
+      label: t.methodWa,
+      value: "+52 668 139 6431",
+      href: WHATSAPP_URL,
+    },
   ];
 
   return (
