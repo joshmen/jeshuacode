@@ -1,16 +1,14 @@
 "use client";
 
-import { Linkedin, Github, Mail } from "lucide-react";
+import { Linkedin, Github } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
-import { CONTACT_EMAIL } from "@/lib/i18n";
 
 export default function Footer() {
   const { t } = useLanguage();
 
   const socials = [
     { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Github, href: "#", label: "GitHub" },
-    { icon: Mail, href: `mailto:${CONTACT_EMAIL}`, label: "Email" },
+    { icon: Github, href: "https://github.com/joshmen", label: "GitHub" },
   ];
 
   return (
@@ -18,11 +16,11 @@ export default function Footer() {
       <div className="mx-auto max-w-[1200px] px-5 md:px-10">
         <div className="grid gap-10 md:grid-cols-[1.7fr_1fr_1fr_1fr]">
           <div>
-            <a href="#top" className="flex items-center gap-[11px] text-xl font-extrabold tracking-[-0.02em]">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[9px] bg-accent text-sm font-black tracking-[-0.03em] text-white">
-                JS
+            <a href="#top" className="flex items-center gap-[10px] text-xl font-bold tracking-[-0.02em]">
+              <img src="/images/jeshua-folder.png" alt="Jeshua Software" className="h-8 w-8 shrink-0" />
+              <span>
+                <span className="text-accent">J</span>eshua <span className="text-accent">S</span>oftware
               </span>
-              JeShua Code
             </a>
             <div className="mt-4 max-w-[30ch] text-[14.5px] font-medium leading-relaxed text-white/55">
               {t.footTag}

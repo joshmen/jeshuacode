@@ -6,11 +6,11 @@ import { useLanguage } from "@/lib/language-context";
 
 function Brand() {
   return (
-    <a href="#top" className="flex items-center gap-[11px] text-xl font-extrabold tracking-[-0.02em] text-inherit">
-      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[9px] bg-accent text-sm font-black tracking-[-0.03em] text-white">
-        JS
+    <a href="#top" className="flex items-center gap-[10px] text-xl font-bold tracking-[-0.02em] text-inherit">
+      <img src="/images/jeshua-folder.png" alt="Jeshua Software" className="h-8 w-8 shrink-0" />
+      <span>
+        <span className="text-accent">J</span>eshua <span className="text-accent">S</span>oftware
       </span>
-      JeShua Code
     </a>
   );
 }
@@ -84,7 +84,7 @@ export default function Nav() {
         </a>
         <a
           href="#contacto"
-          className="inline-flex items-center justify-center whitespace-nowrap rounded-[11px] bg-accent px-[22px] py-[13px] text-[15px] font-bold leading-none text-white transition-all hover:-translate-y-px hover:bg-accent-hover"
+          className="inline-flex items-center justify-center whitespace-nowrap rounded-[11px] btn-primary px-[22px] py-[13px] text-[15px] font-bold leading-none transition-all hover:-translate-y-px"
         >
           {t.navCta}
         </a>
@@ -122,7 +122,7 @@ export default function Nav() {
             <a
               href="#contacto"
               onClick={() => setOpen(false)}
-              className="inline-flex flex-1 items-center justify-center whitespace-nowrap rounded-[11px] bg-accent px-[22px] py-[13px] text-[15px] font-bold leading-none text-white"
+              className="inline-flex flex-1 items-center justify-center whitespace-nowrap rounded-[11px] btn-primary px-[22px] py-[13px] text-[15px] font-bold leading-none"
             >
               {t.navCta}
             </a>
