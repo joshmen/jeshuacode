@@ -64,7 +64,7 @@ export default function Contact() {
                 </div>
                 <button
                   type="submit"
-                  className="mt-[18px] inline-flex w-full items-center justify-center whitespace-nowrap rounded-[11px] bg-accent px-7 py-4 text-base font-bold leading-none text-white transition-all hover:-translate-y-px hover:bg-accent-hover"
+                  className="mt-[18px] inline-flex w-full items-center justify-center whitespace-nowrap rounded-[11px] btn-primary px-7 py-4 text-base font-bold leading-none transition-all hover:-translate-y-px"
                 >
                   {t.fSend}
                 </button>

@@ -25,7 +25,7 @@ export default function Cta() {
           <div className="mt-[38px] flex flex-wrap justify-center gap-4">
             <a
               href="#contacto"
-              className="inline-flex items-center gap-[9px] whitespace-nowrap rounded-[11px] bg-accent px-7 py-4 text-base font-bold leading-none text-white transition-all hover:-translate-y-px hover:bg-accent-hover"
+              className="inline-flex items-center gap-[9px] whitespace-nowrap rounded-[11px] btn-primary px-7 py-4 text-base font-bold leading-none transition-all hover:-translate-y-px"
             >
               {t.ctaBtn} →
             </a>
