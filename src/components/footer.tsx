@@ -16,11 +16,8 @@ export default function Footer() {
       <div className="mx-auto max-w-[1200px] px-5 md:px-10">
         <div className="grid gap-10 md:grid-cols-[1.7fr_1fr_1fr_1fr]">
           <div>
-            <a href="#top" className="flex items-center gap-[10px] text-xl font-bold tracking-[-0.02em]">
-              <img src="/images/jeshua-folder.png" alt="Jeshua Software" className="h-8 w-8 shrink-0" />
-              <span>
-                <span className="text-accent">J</span>eshua <span className="text-accent">S</span>oftware
-              </span>
+            <a href="#top" className="inline-flex items-center">
+              <img src="/images/jeshua-logo-white.png" alt="Jeshua Software" className="h-10 w-auto" />
             </a>
             <div className="mt-4 max-w-[30ch] text-[14.5px] font-medium leading-relaxed text-white/55">
               {t.footTag}

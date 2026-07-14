@@ -4,13 +4,14 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 
-function Brand() {
+function Brand({ light }: { light: boolean }) {
   return (
-    <a href="#top" className="flex items-center gap-[10px] text-xl font-bold tracking-[-0.02em] text-inherit">
-      <img src="/images/jeshua-folder.png" alt="Jeshua Software" className="h-8 w-8 shrink-0" />
-      <span>
-        <span className="text-accent">J</span>eshua <span className="text-accent">S</span>oftware
-      </span>
+    <a href="#top" className="flex shrink-0 items-center">
+      <img
+        src={light ? "/images/jeshua-logo-dark.png" : "/images/jeshua-logo-white.png"}
+        alt="Jeshua Software"
+        className="h-9 w-auto"
+      />
     </a>
   );
 }
@@ -67,7 +68,7 @@ export default function Nav() {
           : "h-[74px] bg-transparent text-white"
       }`}
     >
-      <Brand />
+      <Brand light={light} />
 
       <div className="hidden gap-7 text-[15px] font-semibold lg:flex">
         {links.map((l) => (
