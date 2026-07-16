@@ -39,7 +39,8 @@ export default function Projects() {
               {t.featDesc}
             </div>
           </div>
-          <div className="relative h-[240px] overflow-hidden rounded-2xl bg-[#F2F4F7] md:h-[346px]">
+          {/* aspect 16/10 = ratio exacto de la captura (2880x1800): encaja sin recortar */}
+          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-line bg-[#F2F4F7]">
             <Image
               src="/images/real-handy-web.png"
               alt="Panel real de Handy Sales: ventas del dia, pedidos, visitas y cartera por cobrar"
