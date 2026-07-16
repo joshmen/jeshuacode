@@ -89,7 +89,9 @@ export default function Hero() {
 
   return (
     <section id="top" className="relative overflow-hidden bg-white pt-[158px] pb-20 text-foreground lg:pb-28">
-      <div className="relative z-10 mx-auto grid max-w-[1200px] gap-14 px-5 md:px-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+      {/* El panel es denso: se le da mas ancho que al texto y se deja sobresalir a la
+          derecha (la seccion recorta), para que los KPIs se distingan de verdad. */}
+      <div className="relative z-10 mx-auto grid max-w-[1200px] gap-14 px-5 md:px-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-12">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -150,7 +152,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto w-full max-w-[560px] lg:mx-0"
+          className="relative mx-auto w-full max-w-[560px] lg:mx-0 lg:w-[128%] lg:max-w-none"
         >
           <Decor variant="hero" />
           <div className="relative z-10">

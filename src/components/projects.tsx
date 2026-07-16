@@ -24,27 +24,33 @@ export default function Projects() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className={`mt-14 grid items-center gap-8 overflow-hidden rounded-2xl border border-line bg-white p-6 md:p-10 lg:grid-cols-[1fr_1.05fr] ${CARD_HOVER}`}
+          className={`mt-14 overflow-hidden rounded-2xl border border-line bg-white p-6 md:p-10 ${CARD_HOVER}`}
         >
-          <div>
-            <div className="inline-flex items-center gap-[7px] rounded-full bg-[#E7F8F0] px-[13px] py-1.5 text-[12.5px] font-extrabold text-success">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#4ADE80]" />
-              {t.featBadge}
+          {/* Texto arriba (2 columnas) para dejarle TODO el ancho a la captura */}
+          <div className="grid gap-5 lg:grid-cols-[auto_1fr] lg:items-end lg:gap-12">
+            <div>
+              <div className="inline-flex items-center gap-[7px] rounded-full bg-[#E7F8F0] px-[13px] py-1.5 text-[12.5px] font-extrabold text-success">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#4ADE80]" />
+                {t.featBadge}
+              </div>
+              <div className="mt-4 text-[28px] font-extrabold tracking-[-0.02em] text-navy md:text-[34px]">
+                {t.featName}
+              </div>
+              <div className="mt-1 text-[15px] font-bold text-accent">{t.featTag}</div>
             </div>
-            <div className="mt-4 text-[28px] font-extrabold tracking-[-0.02em] text-navy md:text-[34px]">
-              {t.featName}
-            </div>
-            <div className="mt-1 text-[15px] font-bold text-accent">{t.featTag}</div>
-            <div className="mt-4 text-base font-medium leading-relaxed text-muted">
+            <div className="text-base font-medium leading-relaxed text-muted lg:max-w-[52ch] lg:justify-self-end lg:text-right">
               {t.featDesc}
             </div>
           </div>
-          {/* aspect 16/10 = ratio exacto de la captura (2880x1800): encaja sin recortar */}
-          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-line bg-[#F2F4F7]">
+
+          {/* Captura a TODO el ancho de la card: el panel es denso, encogido no se distingue.
+              aspect 16/10 = ratio exacto de la imagen (2880x1800) -> sin recorte. */}
+          <div className="relative mt-8 aspect-[16/10] w-full overflow-hidden rounded-2xl border border-line bg-[#F2F4F7]">
             <Image
               src="/images/real-handy-web.png"
               alt="Panel real de Handy Sales: ventas del dia, pedidos, visitas y cartera por cobrar"
               fill
+              sizes="(max-width: 1024px) 100vw, 1120px"
               className="object-cover object-top"
             />
           </div>
