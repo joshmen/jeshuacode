@@ -8,7 +8,7 @@ import { useLanguage } from "@/lib/language-context";
 import SectionHead from "./section-head";
 
 const CARD_HOVER =
-  "transition-all duration-200 hover:-translate-y-1 hover:border-[#B9D2FF] hover:shadow-[0_14px_34px_rgba(0,97,254,.1)]";
+  "card-shadow transition-all duration-200 hover:-translate-y-1 hover:border-[#B9D2FF] hover:shadow-[0_14px_34px_rgba(0,97,254,.1)]";
 
 export default function Projects() {
   const { t } = useLanguage();

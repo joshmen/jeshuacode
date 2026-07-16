@@ -37,7 +37,7 @@ export default function Services() {
               <motion.div
                 key={card.title}
                 variants={fadeInUp}
-                className="rounded-[14px] border border-line bg-white px-[30px] py-8 transition-all duration-200 hover:-translate-y-1 hover:border-[#B9D2FF] hover:shadow-[0_14px_34px_rgba(0,97,254,.1)]"
+                className="card-shadow rounded-[14px] border border-line bg-white px-[30px] py-8 transition-all duration-200 hover:-translate-y-1 hover:border-[#B9D2FF] hover:shadow-[0_14px_34px_rgba(0,97,254,.1)]"
               >
                 <div className="mb-[22px] flex h-[52px] w-[52px] items-center justify-center rounded-[13px] bg-accent-light text-accent">
                   <Icon size={26} strokeWidth={1.8} />

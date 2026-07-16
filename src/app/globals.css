@@ -32,10 +32,33 @@ body {
   font-family: var(--font-sans);
 }
 
+/* Sombras medidas de nimble.com (la referencia):
+   nav 0 2px 1px rgba(0,0,0,.2) | boton 0 2px 4px rgba(0,0,0,.15) | card 0 5px 25px rgba(0,0,0,.2) */
 .btn-primary {
   background: var(--color-cta);
   color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 .btn-primary:hover {
   background: var(--color-cta-hover);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
+/* Botones secundarios / outline: misma familia de sombra, mas sutil */
+.btn-soft {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.btn-soft:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.14);
+}
+
+/* Campos de formulario: la ligera sombra de asiento que usa Nimble */
+.field-shadow {
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.12);
+}
+
+/* Tarjetas: SOLO la sombra de reposo. El hover lo siguen definiendo las utilidades
+   de Tailwind de cada card (si se pone aqui un :hover, chocan). */
+.card-shadow {
+  box-shadow: 0 4px 16px rgba(16, 24, 40, 0.08);
 }

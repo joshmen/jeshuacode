@@ -46,7 +46,7 @@ export default function SocialProof() {
             <motion.div
               key={fact}
               variants={fadeInUp}
-              className="flex items-center gap-[11px] rounded-[14px] border border-line bg-white px-[18px] py-4"
+              className="card-shadow flex items-center gap-[11px] rounded-[14px] border border-line bg-white px-[18px] py-4"
             >
               <BadgeCheck size={20} strokeWidth={2} className="shrink-0 text-accent" />
               <span className="text-[14.5px] font-semibold leading-snug text-foreground">

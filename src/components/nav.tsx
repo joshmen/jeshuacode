@@ -62,8 +62,12 @@ export default function Nav() {
 
   return (
     <nav
+      // Nimble mantiene SIEMPRE una sombra bajo el nav (medido: 0 2px 1px rgba(0,0,0,.2));
+      // al hacer scroll se acentua un poco.
       className={`fixed inset-x-0 top-0 z-100 flex items-center gap-[34px] bg-accent px-5 text-white transition-all duration-250 md:px-10 ${
-        scrolled ? "h-[64px] shadow-[0_2px_16px_rgba(0,0,0,.12)]" : "h-[74px]"
+        scrolled
+          ? "h-[64px] shadow-[0_2px_12px_rgba(0,0,0,.22)]"
+          : "h-[74px] shadow-[0_2px_1px_rgba(0,0,0,.2)]"
       }`}
     >
       <Brand />

@@ -134,7 +134,7 @@ export default function Hero() {
                 required
                 autoComplete="email"
                 placeholder={t.heroEmailPh}
-                className="w-full flex-1 rounded-[11px] border border-[#D0D5DD] bg-white px-[15px] py-[13px] text-[15px] font-medium text-foreground placeholder:text-faint focus:border-accent focus:outline-none focus:ring-[3px] focus:ring-accent/20"
+                className="field-shadow w-full flex-1 rounded-[11px] border border-[#D0D5DD] bg-white px-[15px] py-[13px] text-[15px] font-medium text-foreground placeholder:text-faint focus:border-accent focus:outline-none focus:ring-[3px] focus:ring-accent/20"
               />
               <button
                 type="submit"

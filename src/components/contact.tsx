@@ -136,7 +136,7 @@ export default function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => fbqTrack("Contact")}
-              className="group flex items-center gap-[15px] rounded-[14px] border border-line bg-white p-5 transition-all hover:border-[#B9D2FF] hover:bg-[#F8FAFF]"
+              className="card-shadow group flex items-center gap-[15px] rounded-[14px] border border-line bg-white p-5 transition-all hover:border-[#B9D2FF] hover:bg-[#F8FAFF]"
             >
               <div className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-xl bg-accent-light text-accent">
                 <MessageCircle size={24} strokeWidth={1.8} />
