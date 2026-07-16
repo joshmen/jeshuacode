@@ -1,15 +1,17 @@
 "use client";
 
-import Image from "next/image";
+import { useState, useRef, useEffect, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/language-context";
+import { fbqTrack } from "@/lib/fbq";
+import Decor from "./decor";
 
 function CrmWindow() {
   const bars = [44, 60, 50, 78, 66, 92, 72, 100];
   const sideItems = ["Panel", "Pedidos", "Clientes", "Rutas", "Facturación", "Reportes"];
 
   return (
-    <div className="w-[min(850px,94vw)] overflow-hidden rounded-t-[14px] bg-white text-foreground shadow-[0_-6px_90px_rgba(0,97,254,.3),0_40px_80px_rgba(0,0,0,.55)]">
+    <div className="w-full overflow-hidden rounded-t-[14px] bg-white text-foreground shadow-[0_-6px_90px_rgba(0,97,254,.3),0_40px_80px_rgba(0,0,0,.55)]">
       <div className="flex h-11 items-center gap-2 border-b border-[#ECEEF2] bg-[#F7F8FA] px-4">
         <span className="h-[11px] w-[11px] rounded-full bg-[#ff5f57]" />
         <span className="h-[11px] w-[11px] rounded-full bg-[#febc2e]" />
@@ -98,64 +100,119 @@ function BotPhone() {
   );
 }
 
-function SidePhoto({ src, alt, side }: { src: string; alt: string; side: "left" | "right" }) {
-  return (
-    <div
-      className={`absolute bottom-0 z-1 hidden h-[372px] w-[250px] overflow-hidden rounded-t-[14px] border border-b-0 border-white/14 xl:block ${
-        side === "left" ? "left-0" : "right-0"
-      }`}
-    >
-      <Image src={src} alt={alt} width={500} height={744} className="h-full w-full object-cover" />
-    </div>
-  );
-}
-
 export default function Hero() {
   const { t } = useLanguage();
+  const [sent, setSent] = useState(false);
+  // Momento en que el formulario quedó listo para el usuario (anti-bot: time-trap).
+  const loadedAt = useRef(0);
+  useEffect(() => {
+    loadedAt.current = Date.now();
+  }, []);
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const email = String(data.get("email") ?? "").trim();
+    const eventId =
+      typeof crypto !== "undefined" && "randomUUID" in crypto
+        ? crypto.randomUUID()
+        : String(Date.now());
+    const payload = {
+      name: email.split("@")[0] || email,
+      email,
+      message: "Lead desde el hero (dejo su correo)",
+      // Honeypot: campo invisible; si viene lleno, lo llenó un bot.
+      website: String(data.get("website") ?? ""),
+      // Cuánto tardó en enviar desde que cargó (ms); los bots envían casi al instante.
+      elapsed_ms: loadedAt.current ? Date.now() - loadedAt.current : 99999,
+      event_id: eventId,
+    };
+    setSent(true);
+    fbqTrack("Lead", {}, { eventID: eventId });
+    try {
+      await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+    } catch {
+      // el usuario ya vio confirmación; el lead viaja best-effort
+    }
+  };
 
   return (
-    <section id="top" className="relative overflow-hidden bg-ink pt-[158px] text-white lg:h-[940px]">
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-4 mx-auto flex max-w-[880px] flex-col items-center gap-6 px-5 text-center md:px-10"
-      >
-        <h1 className="max-w-[15ch] text-[44px] font-extrabold leading-[1.02] tracking-[-0.03em] md:text-[74px]">
-          {t.h1}
-        </h1>
-        <p className="max-w-[50ch] text-[17px] font-medium leading-normal text-white/60 md:text-[19px]">
-          {t.sub}
-        </p>
-        <div className="mt-2 flex flex-wrap items-center justify-center gap-[22px]">
-          <a
-            href="#contacto"
-            className="inline-flex items-center gap-[9px] whitespace-nowrap rounded-[11px] btn-primary px-7 py-4 text-base font-bold leading-none transition-all hover:-translate-y-px"
-          >
-            {t.cta1} →
-          </a>
-          <a
-            href="#proyectos"
-            className="inline-flex items-center gap-[7px] text-[15.5px] font-bold text-white underline decoration-2 underline-offset-[5px] hover:opacity-80"
-          >
-            {t.cta2} →
-          </a>
-        </div>
-        <div className="text-[13px] font-medium text-white/40">{t.tiny}</div>
-      </motion.div>
+    <section id="top" className="relative overflow-hidden bg-white pt-[158px] pb-20 text-foreground lg:pb-28">
+      <div className="relative z-10 mx-auto grid max-w-[1200px] gap-14 px-5 md:px-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col items-center gap-6 text-center lg:items-start lg:text-left"
+        >
+          <h1 className="max-w-[15ch] text-[38px] font-extrabold leading-[1.05] tracking-[-0.03em] md:text-[52px] lg:text-[56px]">
+            {t.h1}
+          </h1>
+          <p className="max-w-[46ch] text-[17px] font-medium leading-normal text-muted md:text-[19px]">
+            {t.sub}
+          </p>
 
-      <SidePhoto src="/images/hero-team.jpg" alt="Equipo de desarrollo trabajando" side="left" />
-      <SidePhoto src="/images/hero-client.jpg" alt="Cliente usando la app" side="right" />
+          {sent ? (
+            <div className="mx-auto w-full max-w-[440px] rounded-[11px] border border-[#A6F0C6] bg-[#E7F8F0] px-5 py-4 text-[15px] font-semibold text-[#05603A] lg:mx-0">
+              {t.heroSent}
+            </div>
+          ) : (
+            <form
+              onSubmit={onSubmit}
+              className="mx-auto flex w-full max-w-[440px] flex-col gap-3 sm:flex-row lg:mx-0"
+            >
+              {/* Honeypot anti-bot: invisible para humanos, tentador para bots. No tocar. */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -left-[9999px] h-0 w-0 overflow-hidden opacity-0"
+              >
+                <label htmlFor="hero-website">No llenar este campo</label>
+                <input
+                  id="hero-website"
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+              <input
+                type="email"
+                name="email"
+                required
+                autoComplete="email"
+                placeholder={t.heroEmailPh}
+                className="w-full flex-1 rounded-[11px] border border-[#D0D5DD] bg-white px-[15px] py-[13px] text-[15px] font-medium text-foreground placeholder:text-faint focus:border-accent focus:outline-none focus:ring-[3px] focus:ring-accent/20"
+              />
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center gap-[9px] whitespace-nowrap rounded-[11px] btn-primary px-7 py-[13px] text-base font-bold leading-none transition-all hover:-translate-y-px"
+              >
+                {t.heroEmailCta} →
+              </button>
+            </form>
+          )}
 
-      <motion.div
-        initial={{ opacity: 0, y: 80 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-2 mx-auto mt-14 w-fit lg:absolute lg:bottom-[-42px] lg:left-1/2 lg:mt-0 lg:-translate-x-1/2"
-      >
-        <CrmWindow />
-        <BotPhone />
-      </motion.div>
+          <div className="text-[13px] font-medium text-faint">{t.tiny}</div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="relative mx-auto w-full max-w-[560px] lg:mx-0"
+        >
+          <Decor variant="hero" />
+          <div className="relative z-10">
+            <CrmWindow />
+            <BotPhone />
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 }

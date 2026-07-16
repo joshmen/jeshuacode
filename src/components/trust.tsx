@@ -1,36 +1,52 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/language-context";
+import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 const TECHS = [
   "React",
   "Next.js",
   ".NET",
+  "React Native",
+  "PostgreSQL",
   "Azure",
   "Google Cloud",
-  "PostgreSQL",
-  "React Native",
   "Stripe",
 ];
 
 export default function Trust() {
   const { t } = useLanguage();
   return (
-    <section className="border-b border-[#F0F1F4] bg-white py-11">
+    <section className="bg-surface py-16 md:py-20">
       <div className="mx-auto max-w-[1200px] px-5 md:px-10">
-        <div className="text-center text-[13px] font-bold tracking-[0.04em] text-[#98A2B3]">
-          {t.trustLab}
-        </div>
-        <div className="mt-[26px] flex flex-wrap items-center justify-center gap-x-11 gap-y-3.5">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="text-center text-[13px] font-extrabold uppercase tracking-[0.09em] text-accent"
+        >
+          {t.techTitle}
+        </motion.div>
+
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="mt-8 flex flex-wrap items-center justify-center gap-3"
+        >
           {TECHS.map((tech) => (
-            <span
+            <motion.span
               key={tech}
-              className="text-xl font-extrabold tracking-[-0.02em] text-[#98A2B3] transition-colors hover:text-muted"
+              variants={fadeInUp}
+              className="rounded-full border border-line bg-white px-5 py-2.5 text-sm font-bold text-muted transition-colors hover:border-accent/40 hover:text-accent"
             >
               {tech}
-            </span>
+            </motion.span>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

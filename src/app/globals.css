@@ -1,9 +1,14 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-accent: #4285F4;
-  --color-accent-hover: #3367D6;
-  --color-accent-light: #E8F0FE;
+  /* Azul estilo Nimble (nav, links, iconos, decoracion) */
+  --color-accent: #159BD7;
+  --color-accent-hover: #0F87BD;
+  --color-accent-light: #E4F3FB;
+  /* Verde CTA estilo Nimble */
+  --color-cta: #3BD784;
+  --color-cta-hover: #2BC974;
+  /* Legacy (sin uso tras el rediseno Nimble) */
   --color-brand-yellow: #FBBC04;
   --color-brand-yellow-hover: #E5A800;
   --color-navy: #2A3350;
@@ -14,7 +19,7 @@
   --color-surface: #F6F7F9;
   --color-line: #EAECF0;
   --color-success: #12B76A;
-  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
@@ -28,9 +33,9 @@ body {
 }
 
 .btn-primary {
-  background: var(--color-brand-yellow);
-  color: var(--color-navy);
+  background: var(--color-cta);
+  color: #ffffff;
 }
 .btn-primary:hover {
-  background: var(--color-brand-yellow-hover);
+  background: var(--color-cta-hover);
 }

@@ -1,12 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Monitor, Bot, Smartphone, Layers, Lightbulb, Cloud } from "lucide-react";
+import { Globe, Bot, Smartphone, Server, Compass, Cloud } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { useLanguage } from "@/lib/language-context";
 import SectionHead from "./section-head";
 
-const ICONS = [Monitor, Bot, Smartphone, Layers, Lightbulb, Cloud];
+const ICONS = [Globe, Bot, Smartphone, Server, Compass, Cloud];
 
 export default function Services() {
   const { t } = useLanguage();
@@ -23,7 +23,7 @@ export default function Services() {
   return (
     <section id="servicios" className="bg-surface py-20 md:py-28">
       <div className="mx-auto max-w-[1200px] px-5 md:px-10">
-        <SectionHead eyebrow={t.servEy} title={t.servTitle} sub={t.servSub} />
+        <SectionHead eyebrow={t.servEy} title={t.servTitle} sub={t.servSub} centered />
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -37,7 +37,7 @@ export default function Services() {
               <motion.div
                 key={card.title}
                 variants={fadeInUp}
-                className="rounded-[18px] border border-line bg-white px-[30px] py-8 transition-all duration-200 hover:-translate-y-[3px] hover:border-[#B9D2FF] hover:shadow-[0_14px_34px_rgba(0,97,254,.1)]"
+                className="rounded-[14px] border border-line bg-white px-[30px] py-8 transition-all duration-200 hover:-translate-y-1 hover:border-[#B9D2FF] hover:shadow-[0_14px_34px_rgba(0,97,254,.1)]"
               >
                 <div className="mb-[22px] flex h-[52px] w-[52px] items-center justify-center rounded-[13px] bg-accent-light text-accent">
                   <Icon size={26} strokeWidth={1.8} />
