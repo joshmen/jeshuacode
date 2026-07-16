@@ -155,7 +155,7 @@ const ES: Dict = {
   botBiz: "Cuenta de empresa",
   // Conversación real del bot (las preguntas son textuales de una charla de prueba).
   bm1: "Hola, ¿cuánto cuesta el plan básico?",
-  bm2: "¡Hola! El plan de bots con IA cuesta $4,500 MXN al mes: respuestas automáticas con la información de tu negocio, captura de clientes potenciales y panel de control. ¿Te gustaría que te contactemos?",
+  bm2: "¡Hola! El plan básico cuesta $1,500 MXN al mes e incluye respuestas automáticas con la información de tu negocio y captura de clientes potenciales. ¿Te gustaría que te contactemos?",
   bm3: "Me interesa para mi negocio de plomería, ¿me pueden contactar? Soy Josh",
   bm4: "¡Listo, Josh! Registré tu interés y un asesor te contacta hoy mismo. 🙌",
   botLeadTitle: "Cliente potencial capturado",
@@ -315,15 +315,16 @@ const ES: Dict = {
       popular: false,
     },
     {
-      name: "Bots & Automatización",
-      price: "$4,500",
+      // Precios REALES del bot en vivo (RAG del tenant demo): basico 1500, premium 3500, setup 5000.
+      name: "Bots con IA",
+      price: "$1,500",
       per: "MXN · mensual",
       features: [
-        "Bot de WhatsApp",
-        "Flujos de atención con IA",
-        "Integraciones a la medida",
+        "Bot de WhatsApp con IA",
+        "Respuestas con la información de tu negocio",
+        "Captura de clientes potenciales",
         "Panel de control",
-        "Soporte incluido",
+        "Premium $3,500: integra tus sistemas y reportes",
       ],
       cta: "Cotizar",
       popular: true,
@@ -387,7 +388,7 @@ const EN: Dict = {
   botBiz: "Business account",
   // Real bot conversation (the questions are verbatim from a test chat).
   bm1: "Hi, how much is the basic plan?",
-  bm2: "Hi! Our AI bot plan is $4,500 MXN per month: automatic replies with your business info, lead capture and a control panel. Would you like us to contact you?",
+  bm2: "Hi! The basic plan is $1,500 MXN per month and includes automatic replies with your business info and lead capture. Would you like us to contact you?",
   bm3: "I'm interested for my plumbing business, can you contact me? I'm Josh",
   bm4: "Done, Josh! I saved your request and an advisor will reach out today. 🙌",
   botLeadTitle: "Lead captured",
@@ -547,15 +548,16 @@ const EN: Dict = {
       popular: false,
     },
     {
-      name: "Bots & Automation",
-      price: "$4,500",
+      // Real pricing from the live bot's RAG: basic 1500, premium 3500, setup 5000.
+      name: "AI bots",
+      price: "$1,500",
       per: "MXN · monthly",
       features: [
-        "WhatsApp bot",
-        "AI support flows",
-        "Custom integrations",
+        "WhatsApp bot with AI",
+        "Answers with your business info",
+        "Lead capture",
         "Control panel",
-        "Support included",
+        "Premium $3,500: integrations and reports",
       ],
       cta: "Get a quote",
       popular: true,
