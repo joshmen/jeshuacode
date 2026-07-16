@@ -41,10 +41,10 @@ export default function Projects() {
           </div>
           <div className="relative h-[240px] overflow-hidden rounded-2xl bg-[#F2F4F7] md:h-[346px]">
             <Image
-              src="/images/handysales-crm.jpg"
-              alt="Dashboard de Handy Sales CRM"
+              src="/images/real-handy-web.png"
+              alt="Panel real de Handy Sales: ventas del dia, pedidos, visitas y cartera por cobrar"
               fill
-              className="object-cover"
+              className="object-cover object-top"
             />
           </div>
         </motion.div>

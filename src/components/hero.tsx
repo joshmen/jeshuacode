@@ -1,101 +1,47 @@
 "use client";
 
 import { useState, useRef, useEffect, type FormEvent } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/language-context";
 import { fbqTrack } from "@/lib/fbq";
 import Decor from "./decor";
 
+/** Captura REAL del panel de Handy Sales (proyecto en produccion) en un marco de navegador. */
 function CrmWindow() {
-  const bars = [44, 60, 50, 78, 66, 92, 72, 100];
-  const sideItems = ["Panel", "Pedidos", "Clientes", "Rutas", "Facturación", "Reportes"];
-
   return (
-    <div className="w-full overflow-hidden rounded-t-[14px] bg-white text-foreground shadow-[0_-6px_90px_rgba(0,97,254,.3),0_40px_80px_rgba(0,0,0,.55)]">
-      <div className="flex h-11 items-center gap-2 border-b border-[#ECEEF2] bg-[#F7F8FA] px-4">
-        <span className="h-[11px] w-[11px] rounded-full bg-[#ff5f57]" />
-        <span className="h-[11px] w-[11px] rounded-full bg-[#febc2e]" />
-        <span className="h-[11px] w-[11px] rounded-full bg-[#28c840]" />
-        <div className="ml-4 flex h-[27px] max-w-[360px] flex-1 items-center rounded-lg border border-[#E4E7EC] bg-white px-3 text-xs font-medium text-[#98A2B3]">
-          Buscar pedidos, clientes, rutas…
+    <div className="w-full overflow-hidden rounded-[14px] bg-white shadow-[0_-6px_90px_rgba(21,155,215,.18),0_30px_70px_rgba(16,24,40,.22)]">
+      <div className="flex h-10 items-center gap-2 border-b border-[#ECEEF2] bg-[#F7F8FA] px-4">
+        <span className="h-[10px] w-[10px] rounded-full bg-[#ff5f57]" />
+        <span className="h-[10px] w-[10px] rounded-full bg-[#febc2e]" />
+        <span className="h-[10px] w-[10px] rounded-full bg-[#28c840]" />
+        <div className="ml-3 hidden h-[24px] max-w-[320px] flex-1 items-center rounded-md border border-[#E4E7EC] bg-white px-3 text-[11px] font-medium text-[#98A2B3] sm:flex">
+          app.handysuites.mx/dashboard
         </div>
       </div>
-      <div className="flex h-[298px]">
-        <div className="hidden w-[198px] flex-col gap-1 border-r border-[#EFF1F4] bg-[#FBFBFC] px-3 py-4 sm:flex">
-          {sideItems.map((item, i) => (
-            <div
-              key={item}
-              className={`flex h-[34px] items-center gap-[11px] rounded-lg px-3 text-[13px] font-semibold ${
-                i === 0 ? "bg-accent-light text-accent" : "text-faint"
-              }`}
-            >
-              <span className={`h-4 w-4 rounded-[5px] ${i === 0 ? "bg-accent" : "bg-[#D0D5DD]"}`} />
-              {item}
-            </div>
-          ))}
-        </div>
-        <div className="flex flex-1 flex-col gap-4 p-5">
-          <div className="flex items-center justify-between">
-            <div className="text-[17px] font-extrabold tracking-[-0.01em]">Panel de ventas</div>
-            <div className="rounded-[7px] bg-accent-light px-[11px] py-[5px] text-[11px] font-bold text-accent">
-              En vivo
-            </div>
-          </div>
-          <div className="flex gap-3.5">
-            {[
-              { l: "Ventas del mes", v: "$248K", d: "▲ 12% vs. mes anterior" },
-              { l: "Pedidos", v: "1,204", d: "▲ 8%" },
-              { l: "Clientes activos", v: "863", d: "▲ 5%" },
-            ].map((c) => (
-              <div key={c.l} className="flex-1 rounded-xl border border-line px-4 py-3.5">
-                <div className="text-[11.5px] font-semibold text-faint">{c.l}</div>
-                <div className="mt-1.5 text-[25px] font-extrabold tracking-[-0.015em]">{c.v}</div>
-                <div className="mt-[5px] text-[11.5px] font-bold text-success">{c.d}</div>
-              </div>
-            ))}
-          </div>
-          <div className="flex flex-1 items-end gap-3.5 rounded-xl border border-line px-[18px] pb-4 pt-[18px]">
-            {bars.map((h, i) => (
-              <div
-                key={i}
-                className="flex-1 rounded-t-md bg-gradient-to-b from-[#4D94FF] to-accent"
-                style={{ height: `${h}%` }}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
+      <Image
+        src="/images/real-handy-web.png"
+        alt="Panel de Handy Sales: ventas del dia, pedidos, visitas y clientes activos"
+        width={1440}
+        height={900}
+        priority
+        className="block w-full"
+      />
     </div>
   );
 }
 
-function BotPhone() {
-  const { t } = useLanguage();
+/** Captura REAL de la app movil de Handy Sales (emulador) en un marco de telefono. */
+function PhoneMock() {
   return (
-    <div className="absolute -right-[116px] bottom-[22px] z-3 hidden w-[230px] overflow-hidden rounded-[34px] border-7 border-[#101010] bg-white shadow-[0_40px_80px_rgba(0,0,0,.55)] xl:block">
-      <div className="flex items-center gap-2.5 bg-accent px-[15px] pb-[13px] pt-4 text-white">
-        <div className="flex h-[34px] w-[34px] items-center justify-center rounded-full bg-white/22 text-[13px] font-extrabold">
-          JS
-        </div>
-        <div>
-          <div className="text-[13.5px] font-extrabold leading-tight">{t.botName}</div>
-          <div className="mt-0.5 flex items-center gap-[5px] text-[11px] font-semibold opacity-90">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#4ADE80]" />
-            {t.botStat}
-          </div>
-        </div>
-      </div>
-      <div className="flex h-[184px] flex-col gap-2 bg-[#F2F4F7] px-3 py-3.5">
-        <div className="max-w-[82%] self-start rounded-[13px] rounded-bl-[4px] bg-white px-[11px] py-2 text-xs font-medium leading-snug text-foreground shadow-[0_1px_2px_rgba(16,24,40,.06)]">
-          {t.bm1}
-        </div>
-        <div className="max-w-[82%] self-end rounded-[13px] rounded-br-[4px] bg-accent px-[11px] py-2 text-xs font-medium leading-snug text-white">
-          {t.bm2}
-        </div>
-        <div className="max-w-[82%] self-start rounded-[13px] rounded-bl-[4px] bg-white px-[11px] py-2 text-xs font-medium leading-snug text-foreground shadow-[0_1px_2px_rgba(16,24,40,.06)]">
-          {t.bm3}
-        </div>
-      </div>
+    <div className="absolute -bottom-10 -right-4 z-3 hidden w-[150px] overflow-hidden rounded-[24px] border-[6px] border-[#0F1115] bg-[#0F1115] shadow-[0_30px_60px_rgba(16,24,40,.45)] md:block lg:w-[172px]">
+      <Image
+        src="/images/real-handy-movil.png"
+        alt="App movil de Handy Sales: visitas del dia, pedidos y ventas del vendedor"
+        width={646}
+        height={1400}
+        className="block w-full rounded-[18px]"
+      />
     </div>
   );
 }
@@ -209,7 +155,7 @@ export default function Hero() {
           <Decor variant="hero" />
           <div className="relative z-10">
             <CrmWindow />
-            <BotPhone />
+            <PhoneMock />
           </div>
         </motion.div>
       </div>
