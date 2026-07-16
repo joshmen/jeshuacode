@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useRef, useEffect, type FormEvent } from "react";
 import { MessageCircle } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 import { WHATSAPP_URL } from "@/lib/i18n";
@@ -13,6 +13,11 @@ const inputCls =
 export default function Contact() {
   const { t } = useLanguage();
   const [sent, setSent] = useState(false);
+  // Momento en que el formulario quedó listo para el usuario (anti-bot: time-trap).
+  const loadedAt = useRef(0);
+  useEffect(() => {
+    loadedAt.current = Date.now();
+  }, []);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,6 +32,10 @@ export default function Contact() {
       email: String(data.get("email") ?? ""),
       company: String(data.get("company") ?? ""),
       message: String(data.get("message") ?? ""),
+      // Honeypot: campo invisible; si viene lleno, lo llenó un bot.
+      website: String(data.get("website") ?? ""),
+      // Cuánto tardó en enviar desde que cargó (ms); los bots envían casi al instante.
+      elapsed_ms: loadedAt.current ? Date.now() - loadedAt.current : 99999,
       event_id: eventId,
     };
     setSent(true);
@@ -63,6 +72,20 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={onSubmit}>
+                {/* Honeypot anti-bot: invisible para humanos, tentador para bots. No tocar. */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -left-[9999px] h-0 w-0 overflow-hidden opacity-0"
+                >
+                  <label htmlFor="website">No llenar este campo</label>
+                  <input
+                    id="website"
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="mb-[18px] sm:mb-0">
                     <label className="mb-[7px] block text-[13px] font-bold text-[#344054]">
