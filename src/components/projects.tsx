@@ -56,13 +56,13 @@ export default function Projects() {
           </div>
         </motion.div>
 
-        {/* Jeyma + "Tu proyecto aquí" */}
+        {/* Jeyma + Bots (producto propio, en vivo) + "Tu proyecto aquí" */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="mt-6 grid gap-6 md:grid-cols-2"
+          className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
         >
           <motion.div
             variants={fadeInUp}
@@ -85,6 +85,33 @@ export default function Projects() {
               </div>
               <div className="mt-[9px] text-[15px] font-medium leading-relaxed text-muted">
                 {t.proj2Desc}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Bots con IA: producto propio, en vivo. Preview del chat real (mismos textos que el mockup grande). */}
+          <motion.div
+            variants={fadeInUp}
+            className={`overflow-hidden rounded-2xl border border-line bg-white ${CARD_HOVER}`}
+          >
+            <div className="flex h-[196px] flex-col justify-center gap-1.5 bg-[#ECE5DD] px-5">
+              <div className="max-w-[84%] self-end rounded-[9px] rounded-br-[3px] bg-[#D9FDD3] px-2.5 py-1.5 text-[11px] font-medium leading-snug text-[#111B21] shadow-[0_1px_1px_rgba(11,20,26,.13)]">
+                {t.bm1}
+              </div>
+              <div className="max-w-[88%] self-start rounded-[9px] rounded-bl-[3px] bg-white px-2.5 py-1.5 text-[11px] font-medium leading-snug text-[#111B21] shadow-[0_1px_1px_rgba(11,20,26,.13)]">
+                {t.bm4}
+              </div>
+            </div>
+            <div className="px-7 pb-[30px] pt-[26px]">
+              <span className="inline-flex items-center gap-[7px] rounded-full bg-[#E7F8F0] px-[11px] py-[5px] text-xs font-extrabold text-success">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#4ADE80]" />
+                {t.proj4Badge}
+              </span>
+              <div className="mt-3.5 text-[21px] font-extrabold tracking-[-0.01em] text-navy">
+                {t.proj4Name}
+              </div>
+              <div className="mt-[9px] text-[15px] font-medium leading-relaxed text-muted">
+                {t.proj4Desc}
               </div>
             </div>
           </motion.div>

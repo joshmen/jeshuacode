@@ -90,6 +90,9 @@ export interface Dict {
   proj3Name: string;
   proj3Desc: string;
   proj3Cta: string;
+  proj4Badge: string;
+  proj4Name: string;
+  proj4Desc: string;
   tmEy: string;
   tmTitle: string;
   proofEy: string;
@@ -193,6 +196,10 @@ const ES: Dict = {
   proj3Name: "Tu proyecto aquí",
   proj3Desc: "El siguiente caso de éxito puede ser el tuyo. Cuéntanos tu idea.",
   proj3Cta: "Hablemos",
+  proj4Badge: "En vivo",
+  proj4Name: "Bots con IA",
+  proj4Desc:
+    "Plataforma propia de bots de WhatsApp: responden con la información de cada negocio y capturan clientes potenciales solos.",
   tmEy: "Testimonios",
   tmTitle: "Lo que dicen nuestros clientes",
   proofEy: "Resultados reales",
@@ -421,6 +428,10 @@ const EN: Dict = {
   proj3Name: "Your project here",
   proj3Desc: "The next success story could be yours. Tell us your idea.",
   proj3Cta: "Let's talk",
+  proj4Badge: "Live",
+  proj4Name: "AI bots",
+  proj4Desc:
+    "Our own WhatsApp bot platform: it answers with each business's own information and captures leads on its own.",
   tmEy: "Testimonials",
   tmTitle: "What our clients say",
   proofEy: "Real results",
