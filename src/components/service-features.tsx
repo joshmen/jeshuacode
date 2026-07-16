@@ -7,6 +7,7 @@ import { useLanguage } from "@/lib/language-context";
 import type { Feature } from "@/lib/i18n";
 import SectionHead from "./section-head";
 import Decor from "./decor";
+import BotChat from "./bot-chat";
 
 const ICONS: LucideIcon[] = [Globe, Bot, Server];
 
@@ -14,10 +15,13 @@ function ServiceFeature({
   data,
   flip,
   icon: Icon,
+  media,
 }: {
   data: Feature;
   flip: boolean;
   icon: LucideIcon;
+  /** Mockup real del servicio; si no hay, cae al marco con icono. */
+  media?: React.ReactNode;
 }) {
   return (
     <motion.div
@@ -53,10 +57,15 @@ function ServiceFeature({
       </div>
 
       <div className={flip ? "md:order-1" : ""}>
-        <div className="relative flex h-[280px] items-center justify-center overflow-hidden rounded-[24px] bg-accent-light shadow-[0_20px_60px_rgba(66,133,244,.14)] md:h-[360px]">
-          <Decor variant="section" />
-          <Icon size={96} strokeWidth={1.3} className="relative z-1 text-accent" />
-        </div>
+        {media ? (
+          // el mockup trae su propio marco; el padding deja aire para la tarjeta del lead
+          <div className="px-2 py-6 sm:px-8">{media}</div>
+        ) : (
+          <div className="relative flex h-[280px] items-center justify-center overflow-hidden rounded-[24px] bg-accent-light shadow-[0_20px_60px_rgba(66,133,244,.14)] md:h-[360px]">
+            <Decor variant="section" />
+            <Icon size={96} strokeWidth={1.3} className="relative z-1 text-accent" />
+          </div>
+        )}
       </div>
     </motion.div>
   );
@@ -76,6 +85,8 @@ export default function ServiceFeatures() {
               data={feature}
               flip={i % 2 === 1}
               icon={ICONS[i] ?? Globe}
+              // El servicio de bots se muestra con el bot real en accion (i = 1)
+              media={i === 1 ? <BotChat /> : undefined}
             />
           ))}
         </div>

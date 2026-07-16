@@ -48,9 +48,14 @@ export interface Dict {
   heroSent: string;
   botName: string;
   botStat: string;
+  botBiz: string;
   bm1: string;
   bm2: string;
   bm3: string;
+  bm4: string;
+  botLeadTitle: string;
+  botLeadName: string;
+  botLeadInterest: string;
   trustLab: string;
   techTitle: string;
   featsEy: string;
@@ -142,11 +147,17 @@ const ES: Dict = {
   heroEmailPh: "Tu correo",
   heroEmailCta: "Agenda una llamada",
   heroSent: "Gracias. Te contactamos en menos de 24 horas.",
-  botName: "Sam",
-  botStat: "En línea",
-  bm1: "Hola 👋 ¿En qué te ayudo?",
-  bm2: "Quiero automatizar mi atención al cliente",
-  bm3: "Listo, lo dejo activo en 48 h.",
+  botName: "Jeshua Software",
+  botStat: "en línea",
+  botBiz: "Cuenta de empresa",
+  // Conversación real del bot (las preguntas son textuales de una charla de prueba).
+  bm1: "Hola, ¿cuánto cuesta el plan básico?",
+  bm2: "¡Hola! El plan de bots con IA cuesta $4,500 MXN al mes: respuestas automáticas con la información de tu negocio, captura de clientes potenciales y panel de control. ¿Te gustaría que te contactemos?",
+  bm3: "Me interesa para mi negocio de plomería, ¿me pueden contactar? Soy Josh",
+  bm4: "¡Listo, Josh! Registré tu interés y un asesor te contacta hoy mismo. 🙌",
+  botLeadTitle: "Cliente potencial capturado",
+  botLeadName: "Josh",
+  botLeadInterest: "Plan de bots para negocio de plomería",
   trustLab: "CONSTRUIMOS CON TECNOLOGÍA DE PRIMER NIVEL",
   techTitle: "CONSTRUIMOS CON TECNOLOGÍA DE PRIMER NIVEL",
   featsEy: "Servicios estrella",
@@ -364,11 +375,17 @@ const EN: Dict = {
   heroEmailPh: "Your email",
   heroEmailCta: "Book a call",
   heroSent: "Thanks. We'll reach out within 24 hours.",
-  botName: "Sam",
-  botStat: "Online",
-  bm1: "Hi 👋 How can I help?",
-  bm2: "I want to automate my customer support",
-  bm3: "Done. I can ship it in 48h.",
+  botName: "Jeshua Software",
+  botStat: "online",
+  botBiz: "Business account",
+  // Real bot conversation (the questions are verbatim from a test chat).
+  bm1: "Hi, how much is the basic plan?",
+  bm2: "Hi! Our AI bot plan is $4,500 MXN per month: automatic replies with your business info, lead capture and a control panel. Would you like us to contact you?",
+  bm3: "I'm interested for my plumbing business, can you contact me? I'm Josh",
+  bm4: "Done, Josh! I saved your request and an advisor will reach out today. 🙌",
+  botLeadTitle: "Lead captured",
+  botLeadName: "Josh",
+  botLeadInterest: "Bot plan for a plumbing business",
   trustLab: "BUILT WITH WORLD-CLASS TECHNOLOGY",
   techTitle: "BUILT WITH WORLD-CLASS TECHNOLOGY",
   featsEy: "Flagship services",
