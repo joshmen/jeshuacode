@@ -24,14 +24,14 @@ export default function Pricing() {
             <motion.div
               key={plan.name}
               variants={fadeInUp}
-              className={`relative rounded-[22px] bg-white px-8 py-9 ${
+              className={`relative rounded-[22px] bg-white px-8 py-9 transition-all ${
                 plan.popular
-                  ? "border-2 border-accent shadow-[0_20px_48px_rgba(0,97,254,.16)]"
+                  ? "border-2 border-accent shadow-[0_24px_54px_rgba(66,133,244,.18)] lg:-translate-y-3 lg:scale-[1.04]"
                   : "border border-line"
               }`}
             >
               {plan.popular && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-accent px-[15px] py-[7px] text-xs font-extrabold tracking-[0.02em] text-white">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-accent px-[16px] py-[7px] text-xs font-extrabold tracking-[0.02em] text-white">
                   {t.popular}
                 </div>
               )}
@@ -46,14 +46,18 @@ export default function Pricing() {
                     key={feature}
                     className="flex items-start gap-[11px] text-[14.5px] font-medium leading-snug text-[#344054]"
                   >
-                    <Check size={19} strokeWidth={2.4} className="mt-px shrink-0 text-success" />
+                    <Check size={19} strokeWidth={2.4} className="mt-px shrink-0 text-accent" />
                     {feature}
                   </li>
                 ))}
               </ul>
               <a
                 href="#contacto"
-                className="mt-[30px] inline-flex w-full items-center justify-center whitespace-nowrap rounded-[11px] btn-primary px-[22px] py-[13px] text-[15px] font-bold leading-none transition-all hover:-translate-y-px"
+                className={`mt-[30px] inline-flex w-full items-center justify-center whitespace-nowrap rounded-[11px] px-[22px] py-[13px] text-[15px] font-bold leading-none transition-all hover:-translate-y-px ${
+                  plan.popular
+                    ? "btn-primary"
+                    : "border-2 border-navy text-navy hover:bg-navy hover:text-white"
+                }`}
               >
                 {plan.cta}
               </a>

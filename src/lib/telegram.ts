@@ -14,7 +14,7 @@ export async function sendTelegramLead(lead: LeadInput): Promise<void> {
   }
 
   const text =
-    `🟦 *Nuevo lead — jeshuasoftware.com*\n\n` +
+    `🟦 *Nuevo lead: jeshuasoftware.com*\n\n` +
     `*Nombre:* ${lead.name}\n` +
     (lead.email ? `*Correo:* ${lead.email}\n` : "") +
     (lead.company ? `*Empresa:* ${lead.company}\n` : "") +

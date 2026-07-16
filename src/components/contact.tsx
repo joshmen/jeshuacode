@@ -1,11 +1,14 @@
 "use client";
 
 import { useState, useRef, useEffect, type FormEvent } from "react";
-import { MessageCircle } from "lucide-react";
+import { motion } from "framer-motion";
+import { MessageCircle, ArrowUpRight } from "lucide-react";
+import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { useLanguage } from "@/lib/language-context";
 import { WHATSAPP_URL } from "@/lib/i18n";
 import { fbqTrack } from "@/lib/fbq";
 import SectionHead from "./section-head";
+import Decor from "./decor";
 
 const inputCls =
   "w-full rounded-[11px] border border-[#D0D5DD] bg-white px-[15px] py-[13px] text-[15px] text-foreground focus:border-accent focus:outline-none focus:ring-[3px] focus:ring-accent/12";
@@ -51,23 +54,25 @@ export default function Contact() {
     }
   };
 
-  const methods = [
-    {
-      icon: MessageCircle,
-      label: t.methodWa,
-      value: "+52 668 139 6431",
-      href: WHATSAPP_URL,
-    },
-  ];
-
   return (
-    <section id="contacto" className="bg-white py-20 md:py-28">
-      <div className="mx-auto max-w-[1200px] px-5 md:px-10">
+    <section id="contacto" className="relative overflow-hidden bg-white py-20 md:py-28">
+      <Decor variant="section" />
+      <div className="relative mx-auto max-w-[1200px] px-5 md:px-10">
         <SectionHead eyebrow={t.contEy} title={t.contTitle} sub={t.contSub} />
-        <div className="mt-14 grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
-          <div>
+
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="mt-14 grid items-stretch gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-10"
+        >
+          <motion.div
+            variants={fadeInUp}
+            className="rounded-[20px] border border-line bg-white p-7 shadow-[0_20px_48px_rgba(16,24,40,.06)] md:p-9"
+          >
             {sent ? (
-              <div className="rounded-[14px] border border-[#A6F0C6] bg-[#E7F8F0] p-6 text-base font-semibold text-[#05603A]">
+              <div className="flex h-full min-h-[320px] items-center rounded-[14px] border border-[#A6F0C6] bg-[#E7F8F0] p-6 text-base font-semibold text-[#05603A]">
                 {t.fSent}
               </div>
             ) : (
@@ -120,31 +125,38 @@ export default function Contact() {
                 </button>
               </form>
             )}
-          </div>
+          </motion.div>
 
-          <div>
-            {methods.map((m) => (
-              <a
-                key={m.label}
-                href={m.href}
-                target={m.href.startsWith("http") ? "_blank" : undefined}
-                rel={m.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                onClick={() => fbqTrack("Contact")}
-                className="mb-3.5 flex items-center gap-[15px] rounded-[14px] border border-line p-5 transition-all hover:border-[#B9D2FF] hover:bg-[#F8FAFF]"
-              >
-                <div className="flex h-[46px] w-[46px] shrink-0 items-center justify-center rounded-xl bg-accent-light text-accent">
-                  <m.icon size={22} strokeWidth={1.8} />
+          <motion.div
+            variants={fadeInUp}
+            className="flex flex-col justify-center rounded-[20px] border border-line bg-surface p-7 md:p-9"
+          >
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => fbqTrack("Contact")}
+              className="card-shadow group flex items-center gap-[15px] rounded-[14px] border border-line bg-white p-5 transition-all hover:border-[#B9D2FF] hover:bg-[#F8FAFF]"
+            >
+              <div className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-xl bg-accent-light text-accent">
+                <MessageCircle size={24} strokeWidth={1.8} />
+              </div>
+              <div className="flex-1">
+                <div className="text-xs font-bold uppercase tracking-[0.03em] text-faint">
+                  {t.methodWa}
                 </div>
-                <div>
-                  <div className="text-xs font-bold uppercase tracking-[0.03em] text-faint">
-                    {m.label}
-                  </div>
-                  <div className="mt-[3px] text-base font-bold text-foreground">{m.value}</div>
+                <div className="mt-[3px] text-lg font-extrabold text-foreground">
+                  +52 668 139 6431
                 </div>
-              </a>
-            ))}
-          </div>
-        </div>
+              </div>
+              <ArrowUpRight
+                size={20}
+                strokeWidth={2}
+                className="shrink-0 text-faint transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
+              />
+            </a>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

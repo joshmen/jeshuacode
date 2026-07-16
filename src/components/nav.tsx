@@ -4,24 +4,20 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 
-function Brand({ light }: { light: boolean }) {
+function Brand() {
   return (
     <a href="#top" className="flex shrink-0 items-center">
-      <img
-        src={light ? "/images/jeshua-logo-dark.png" : "/images/jeshua-logo-white.png"}
-        alt="Jeshua Software"
-        className="h-9 w-auto"
-      />
+      <img src="/images/jeshua-logo-white.png" alt="Jeshua Software" className="h-9 w-auto" />
     </a>
   );
 }
 
-function LangToggle({ dark }: { dark: boolean }) {
+function LangToggle({ onDark }: { onDark: boolean }) {
   const { lang, setLang } = useLanguage();
   return (
     <div
       className={`flex overflow-hidden rounded-[9px] border ${
-        dark ? "border-white/30" : "border-[#D0D5DD]"
+        onDark ? "border-white/40" : "border-[#D0D5DD]"
       }`}
     >
       {(["es", "en"] as const).map((l) => (
@@ -29,7 +25,13 @@ function LangToggle({ dark }: { dark: boolean }) {
           key={l}
           onClick={() => setLang(l)}
           className={`px-[11px] py-1.5 text-[12.5px] font-bold uppercase transition-all ${
-            lang === l ? "bg-accent text-white" : "text-inherit opacity-65 hover:opacity-100"
+            lang === l
+              ? onDark
+                ? "bg-white text-accent"
+                : "bg-accent text-white"
+              : onDark
+                ? "text-white opacity-80 hover:opacity-100"
+                : "text-foreground opacity-65 hover:opacity-100"
           }`}
         >
           {l.toUpperCase()}
@@ -58,29 +60,29 @@ export default function Nav() {
     { href: "#precios", label: t.navPre },
   ];
 
-  const light = scrolled || open;
-
   return (
     <nav
-      className={`fixed inset-x-0 top-0 z-100 flex items-center gap-[34px] px-5 transition-all duration-250 md:px-10 ${
-        light
-          ? "h-[66px] bg-white/88 text-foreground shadow-[0_1px_0_#EAECF0] backdrop-blur-[14px]"
-          : "h-[74px] bg-transparent text-white"
+      // Nimble mantiene SIEMPRE una sombra bajo el nav (medido: 0 2px 1px rgba(0,0,0,.2));
+      // al hacer scroll se acentua un poco.
+      className={`fixed inset-x-0 top-0 z-100 flex items-center gap-[34px] bg-accent px-5 text-white transition-all duration-250 md:px-10 ${
+        scrolled
+          ? "h-[64px] shadow-[0_2px_12px_rgba(0,0,0,.22)]"
+          : "h-[74px] shadow-[0_2px_1px_rgba(0,0,0,.2)]"
       }`}
     >
-      <Brand light={light} />
+      <Brand />
 
       <div className="hidden gap-7 text-[15px] font-semibold lg:flex">
         {links.map((l) => (
-          <a key={l.href} href={l.href} className="opacity-80 transition-opacity hover:text-accent hover:opacity-100">
+          <a key={l.href} href={l.href} className="opacity-85 transition-opacity hover:opacity-100">
             {l.label}
           </a>
         ))}
       </div>
 
       <div className="ml-auto hidden items-center gap-[18px] lg:flex">
-        <LangToggle dark={!light} />
-        <a href="#contacto" className="text-[15px] font-semibold opacity-80 hover:opacity-100">
+        <LangToggle onDark />
+        <a href="#contacto" className="text-[15px] font-semibold opacity-85 hover:opacity-100">
           {t.navCont}
         </a>
         <a
@@ -92,7 +94,7 @@ export default function Nav() {
       </div>
 
       <button
-        className="ml-auto p-2 lg:hidden"
+        className="ml-auto p-2 text-white lg:hidden"
         onClick={() => setOpen(!open)}
         aria-label="Menu"
       >
@@ -119,7 +121,7 @@ export default function Nav() {
             {t.navCont}
           </a>
           <div className="mt-2 flex items-center gap-4 px-3">
-            <LangToggle dark={false} />
+            <LangToggle onDark={false} />
             <a
               href="#contacto"
               onClick={() => setOpen(false)}

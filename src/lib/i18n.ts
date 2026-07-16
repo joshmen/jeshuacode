@@ -5,11 +5,16 @@ export interface Step {
   d: string;
 }
 
-export interface Testimonial {
-  q: string;
+export interface Feature {
+  eyebrow: string;
+  title: string;
+  desc: string;
+  bullets: string[];
+}
+
+export interface ProofStat {
   n: string;
-  r: string;
-  ini: string;
+  label: string;
 }
 
 export interface Plan {
@@ -38,12 +43,23 @@ export interface Dict {
   cta1: string;
   cta2: string;
   tiny: string;
+  heroEmailPh: string;
+  heroEmailCta: string;
+  heroSent: string;
   botName: string;
   botStat: string;
+  botBiz: string;
   bm1: string;
   bm2: string;
   bm3: string;
+  bm4: string;
+  botLeadTitle: string;
+  botLeadName: string;
+  botLeadInterest: string;
   trustLab: string;
+  techTitle: string;
+  featsEy: string;
+  featsTitle: string;
   servEy: string;
   servTitle: string;
   servSub: string;
@@ -74,8 +90,14 @@ export interface Dict {
   proj3Name: string;
   proj3Desc: string;
   proj3Cta: string;
+  proj4Badge: string;
+  proj4Name: string;
+  proj4Desc: string;
   tmEy: string;
   tmTitle: string;
+  proofEy: string;
+  proofTitle: string;
+  proofSub: string;
   priceEy: string;
   priceTitle: string;
   priceSub: string;
@@ -106,7 +128,9 @@ export interface Dict {
   footTerms: string;
   footRights: string;
   steps: Step[];
-  tms: Testimonial[];
+  feats: Feature[];
+  proofStats: ProofStat[];
+  proofFacts: string[];
   plans: Plan[];
   faqs: Faq[];
 }
@@ -123,12 +147,24 @@ const ES: Dict = {
   cta1: "Agenda una llamada",
   cta2: "Ver proyectos",
   tiny: "Sin compromiso · Respuesta en 24 h",
-  botName: "Sam",
-  botStat: "En línea",
-  bm1: "Hola 👋 ¿En qué te ayudo?",
-  bm2: "Quiero automatizar mi atención al cliente",
-  bm3: "Listo, lo dejo activo en 48 h.",
+  heroEmailPh: "Tu correo",
+  heroEmailCta: "Agenda una llamada",
+  heroSent: "Gracias. Te contactamos en menos de 24 horas.",
+  botName: "Jeshua Software",
+  botStat: "en línea",
+  botBiz: "Cuenta de empresa",
+  // Conversación real del bot (las preguntas son textuales de una charla de prueba).
+  bm1: "Hola, ¿cuánto cuesta el plan básico?",
+  bm2: "¡Hola! El plan básico cuesta $1,500 MXN al mes e incluye respuestas automáticas con la información de tu negocio y captura de clientes potenciales. ¿Te gustaría que te contactemos?",
+  bm3: "Me interesa para mi negocio de plomería, ¿me pueden contactar? Soy Josh",
+  bm4: "¡Listo, Josh! Registré tu interés y un asesor te contacta hoy mismo. 🙌",
+  botLeadTitle: "Cliente potencial capturado",
+  botLeadName: "Josh",
+  botLeadInterest: "Plan de bots para negocio de plomería",
   trustLab: "CONSTRUIMOS CON TECNOLOGÍA DE PRIMER NIVEL",
+  techTitle: "CONSTRUIMOS CON TECNOLOGÍA DE PRIMER NIVEL",
+  featsEy: "Servicios estrella",
+  featsTitle: "Lo que mejor sabemos hacer",
   servEy: "Servicios",
   servTitle: "Todo lo que tu negocio necesita para crecer",
   servSub: "Un solo equipo para tu web, tus bots, tus apps y tu software a medida.",
@@ -160,8 +196,15 @@ const ES: Dict = {
   proj3Name: "Tu proyecto aquí",
   proj3Desc: "El siguiente caso de éxito puede ser el tuyo. Cuéntanos tu idea.",
   proj3Cta: "Hablemos",
+  proj4Badge: "En vivo",
+  proj4Name: "Bots con IA",
+  proj4Desc:
+    "Plataforma propia de bots de WhatsApp: responden con la información de cada negocio y capturan clientes potenciales solos.",
   tmEy: "Testimonios",
   tmTitle: "Lo que dicen nuestros clientes",
+  proofEy: "Resultados reales",
+  proofTitle: "Software en producción, no promesas",
+  proofSub: "Datos verificables de lo que ya construimos y operamos hoy.",
   priceEy: "Precios",
   priceTitle: "Planes claros, sin sorpresas",
   priceSub: "Precios de referencia. Cada proyecto se cotiza a la medida de tus necesidades.",
@@ -209,19 +252,52 @@ const ES: Dict = {
       d: "Desplegamos en producción y damos mantenimiento y mejoras.",
     },
   ],
-  tms: [
+  feats: [
     {
-      q: "Entregaron nuestro CRM a tiempo y superó lo que esperábamos. El equipo de ventas por fin trabaja sin fricción.",
-      n: "Carlos M.",
-      r: "Director Comercial · Distribuidora",
-      ini: "CM",
+      eyebrow: "Web",
+      title: "Sitios web que convierten",
+      desc: "Diseñamos y desarrollamos sitios rápidos, modernos y optimizados para que tus visitantes se conviertan en clientes.",
+      bullets: [
+        "Diseño a medida y 100% responsive",
+        "Optimización SEO y velocidad de carga",
+        "Formularios y pagos integrados",
+        "Analítica y píxeles de conversión",
+      ],
     },
     {
-      q: "El bot de WhatsApp redujo a la mitad el tiempo de respuesta a nuestros clientes. Excelente ejecución y trato cercano.",
-      n: "Ana R.",
-      r: "Gerente de Operaciones",
-      ini: "AR",
+      eyebrow: "Bots e IA",
+      title: "Atención automatizada con IA",
+      desc: "Bots de WhatsApp y flujos con inteligencia artificial que atienden a tus clientes las 24 horas.",
+      bullets: [
+        "Bot de WhatsApp con IA",
+        "Respuestas con el contexto de tu negocio",
+        "Integración con tu CRM y catálogo",
+        "Panel de control y métricas",
+      ],
     },
+    {
+      eyebrow: "Software a medida",
+      title: "Plataformas listas para producción",
+      desc: "Construimos sistemas multi-tenant, apps móviles e integraciones a la medida de tu operación.",
+      bullets: [
+        "Apps móviles con React Native",
+        "Backend .NET y PostgreSQL",
+        "Integraciones y pasarelas de pago",
+        "Cloud, CI/CD y monitoreo",
+      ],
+    },
+  ],
+  proofStats: [
+    { n: "2", label: "proyectos en producción y desarrollo" },
+    { n: "8+", label: "tecnologías de primer nivel" },
+    { n: "24h", label: "tiempo de respuesta" },
+    { n: "ES/EN", label: "atención bilingüe" },
+  ],
+  proofFacts: [
+    "Facturación CFDI real ante el SAT",
+    "App móvil iOS y Android offline-first",
+    "Plataforma multi-tenant en producción",
+    "Bots de WhatsApp con IA",
   ],
   plans: [
     {
@@ -233,21 +309,22 @@ const ES: Dict = {
         "100% responsive",
         "SEO básico incluido",
         "Hasta 5 secciones",
-        "Entrega en 2–3 semanas",
+        "Entrega en 2 a 3 semanas",
       ],
       cta: "Cotizar",
       popular: false,
     },
     {
-      name: "Bots & Automatización",
-      price: "$4,500",
+      // Precios REALES del bot en vivo (RAG del tenant demo): basico 1500, premium 3500, setup 5000.
+      name: "Bots con IA",
+      price: "$1,500",
       per: "MXN · mensual",
       features: [
-        "Bot de WhatsApp",
-        "Flujos de atención con IA",
-        "Integraciones a la medida",
+        "Bot de WhatsApp con IA",
+        "Respuestas con la información de tu negocio",
+        "Captura de clientes potenciales",
         "Panel de control",
-        "Soporte incluido",
+        "Premium $3,500: integra tus sistemas y reportes",
       ],
       cta: "Cotizar",
       popular: true,
@@ -303,12 +380,24 @@ const EN: Dict = {
   cta1: "Book a call",
   cta2: "See projects",
   tiny: "No commitment · Reply within 24h",
-  botName: "Sam",
-  botStat: "Online",
-  bm1: "Hi 👋 How can I help?",
-  bm2: "I want to automate my customer support",
-  bm3: "Done — I can ship it in 48h.",
+  heroEmailPh: "Your email",
+  heroEmailCta: "Book a call",
+  heroSent: "Thanks. We'll reach out within 24 hours.",
+  botName: "Jeshua Software",
+  botStat: "online",
+  botBiz: "Business account",
+  // Real bot conversation (the questions are verbatim from a test chat).
+  bm1: "Hi, how much is the basic plan?",
+  bm2: "Hi! The basic plan is $1,500 MXN per month and includes automatic replies with your business info and lead capture. Would you like us to contact you?",
+  bm3: "I'm interested for my plumbing business, can you contact me? I'm Josh",
+  bm4: "Done, Josh! I saved your request and an advisor will reach out today. 🙌",
+  botLeadTitle: "Lead captured",
+  botLeadName: "Josh",
+  botLeadInterest: "Bot plan for a plumbing business",
   trustLab: "BUILT WITH WORLD-CLASS TECHNOLOGY",
+  techTitle: "BUILT WITH WORLD-CLASS TECHNOLOGY",
+  featsEy: "Flagship services",
+  featsTitle: "What we do best",
   servEy: "Services",
   servTitle: "Everything your business needs to grow",
   servSub: "One team for your website, your bots, your apps and your custom software.",
@@ -340,8 +429,15 @@ const EN: Dict = {
   proj3Name: "Your project here",
   proj3Desc: "The next success story could be yours. Tell us your idea.",
   proj3Cta: "Let's talk",
+  proj4Badge: "Live",
+  proj4Name: "AI bots",
+  proj4Desc:
+    "Our own WhatsApp bot platform: it answers with each business's own information and captures leads on its own.",
   tmEy: "Testimonials",
   tmTitle: "What our clients say",
+  proofEy: "Real results",
+  proofTitle: "Software in production, not promises",
+  proofSub: "Verifiable facts about what we already build and run today.",
   priceEy: "Pricing",
   priceTitle: "Clear plans, no surprises",
   priceSub: "Reference prices. Every project is quoted to fit your needs.",
@@ -389,19 +485,52 @@ const EN: Dict = {
       d: "We deploy to production and provide maintenance and improvements.",
     },
   ],
-  tms: [
+  feats: [
     {
-      q: "They delivered our CRM on time and it exceeded what we expected. The sales team finally works without friction.",
-      n: "Carlos M.",
-      r: "Commercial Director · Distributor",
-      ini: "CM",
+      eyebrow: "Web",
+      title: "Websites that convert",
+      desc: "We design and build fast, modern sites optimized to turn your visitors into customers.",
+      bullets: [
+        "Custom design and 100% responsive",
+        "SEO and load-speed optimization",
+        "Integrated forms and payments",
+        "Analytics and conversion pixels",
+      ],
     },
     {
-      q: "The WhatsApp bot cut our customer response time in half. Great execution and a close working relationship.",
-      n: "Ana R.",
-      r: "Operations Manager",
-      ini: "AR",
+      eyebrow: "Bots & AI",
+      title: "AI-powered automated support",
+      desc: "WhatsApp bots and AI-driven flows that serve your customers around the clock.",
+      bullets: [
+        "AI-powered WhatsApp bot",
+        "Answers with your business context",
+        "Integration with your CRM and catalog",
+        "Control panel and metrics",
+      ],
     },
+    {
+      eyebrow: "Custom software",
+      title: "Production-ready platforms",
+      desc: "We build multi-tenant systems, mobile apps and integrations tailored to your operation.",
+      bullets: [
+        "Mobile apps with React Native",
+        ".NET backend and PostgreSQL",
+        "Integrations and payment gateways",
+        "Cloud, CI/CD and monitoring",
+      ],
+    },
+  ],
+  proofStats: [
+    { n: "2", label: "projects in production and development" },
+    { n: "8+", label: "world-class technologies" },
+    { n: "24h", label: "response time" },
+    { n: "ES/EN", label: "bilingual support" },
+  ],
+  proofFacts: [
+    "Real CFDI invoicing with the SAT",
+    "iOS and Android app, offline-first",
+    "Multi-tenant platform in production",
+    "AI-powered WhatsApp bots",
   ],
   plans: [
     {
@@ -413,21 +542,22 @@ const EN: Dict = {
         "100% responsive",
         "Basic SEO included",
         "Up to 5 sections",
-        "Delivery in 2–3 weeks",
+        "Delivery in 2 to 3 weeks",
       ],
       cta: "Get a quote",
       popular: false,
     },
     {
-      name: "Bots & Automation",
-      price: "$4,500",
+      // Real pricing from the live bot's RAG: basic 1500, premium 3500, setup 5000.
+      name: "AI bots",
+      price: "$1,500",
       per: "MXN · monthly",
       features: [
-        "WhatsApp bot",
-        "AI support flows",
-        "Custom integrations",
+        "WhatsApp bot with AI",
+        "Answers with your business info",
+        "Lead capture",
         "Control panel",
-        "Support included",
+        "Premium $3,500: integrations and reports",
       ],
       cta: "Get a quote",
       popular: true,
