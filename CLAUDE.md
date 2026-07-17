@@ -1,104 +1,106 @@
 # Jeshua Software — Claude Code Configuration
 
 ## Project Overview
-- **Company**: JeShua Code / Jeshua Software (consultoría tecnológica + desarrollo de software a medida)
-- **Owner**: Josue
+- **Company**: Jeshua Software (consultoría tecnológica + desarrollo de software a medida)
+- **Owner**: Josue (jms). Responder SIEMPRE en español.
 - **Purpose**: Landing bilingüe (ES/EN) B2B + URL requerida por Stripe Connect
-- **Status**: REDISEÑO COMPLETO (jul 2026), NOT DEPLOYED
+- **Status**: **EN VIVO** en https://jeshuasoftware.com (Vercel, deploy por Git)
 - **Repo**: https://github.com/joshmen/jeshuacode
 
 ## Tech Stack
-- Next.js 16 (App Router) + Tailwind v4 + Framer Motion + Lucide React
-- Static export (`output: "export"`) for Azure Static Web Apps
-- Font: Archivo (Google Fonts, 400–900)
-- Build: **0 errors**, static export generates `out/`
+- Next.js 16 (App Router) + React 19 + Tailwind v4 + Framer Motion + Lucide React
+- **NO es static export**: existe `src/app/api/lead/route.ts` (Node runtime). `next.config.ts`
+  solo trae `images: { unoptimized: true }`.
+- Font: **Roboto** (`next/font/google`, variable `--font-roboto`)
+- Deploy: **Vercel**, no Azure
 
 ## Design Style — CRITICAL
-**Estilo audaz tipo Dropbox 2024**: negro puro en hero/CTA/footer, mucho blanco/gris,
-tipografía grande y contundente. Fuente de verdad del diseño: prototipo HTML en
-`JeshuaCode.zip` (Downloads) + `PROMPT-completo.md`.
-- NO morados/índigo, NO Inter/Space Grotesk, NO gradientes exagerados, NO emojis (salvo 👋 del bot)
+**Estilo Nimble** (nimble.com es la referencia que el dueño eligió y exigió seguir):
+nav azul, hero blanco, CTA verde. NO es el diseño negro tipo Dropbox de la versión anterior.
+- NO morados/índigo, NO gradientes exagerados, NO emojis (salvo 👋 del bot)
 - Tono B2B profesional, **sin historia de fe**
+- **NUNCA rayas largas (— –) en la UI**: usar `:` `.` `·`
+- **NUNCA inventar datos**: nada de testimonios, precios ni logos de clientes que no existan.
+  Los testimonios placeholder se borraron por esto.
 
-### Design Tokens (globals.css → @theme)
+### Design Tokens (`src/app/globals.css` → `@theme inline`)
 ```
-accent: #0061FE (hover #0053D6, light #EAF1FF)  — azul eléctrico
-ink: #0A0A0A                                     — negro hero/CTA/footer
-foreground: #101828 · muted: #475467 · faint: #667085
-surface: #F6F7F9 (secciones grises) · line: #EAECF0 · success: #12B76A
-Titulares: 800, tracking -0.03em · Botones: radio 11px · Secciones: py-28 desktop
+accent:  #159BD7 (hover #0F87BD, light #E4F3FB)  — azul Nimble: nav, links, iconos
+cta:     #3BD784 (hover #2BC974)                 — verde Nimble: botones de accion
+navy:    #2A3350 · foreground: #101828 · muted: #475467 · faint: #667085
+surface: #F6F7F9 · line: #EAECF0 · success: #12B76A
+Legacy sin uso: brand-yellow, ink
 ```
+Sombras (medidas contra Nimble, en `globals.css`): `.btn-primary`, `.btn-soft`, `.field-shadow`,
+`.card-shadow`. Ojo: `.card-shadow` NO define `:hover` (chocaría con las utilidades de Tailwind).
 
 ## i18n (ES/EN)
-- Client-side, compatible con static export. Sin rutas por idioma.
-- `src/lib/i18n.ts` — diccionarios `ES`/`EN` completos + constantes `WHATSAPP_URL`, `CALENDLY_URL`, `CONTACT_EMAIL`
-- `src/lib/language-context.tsx` — `LanguageProvider` + hook `useLanguage()` → `{ lang, setLang, t }`
-- Toggle ES/EN en la nav cambia TODO el texto del sitio
+- Client-side. Sin rutas por idioma.
+- `src/lib/i18n.ts` — diccionarios `ES`/`EN` completos + constantes de contacto
+- `src/lib/language-context.tsx` — `LanguageProvider` + `useLanguage()` → `{ lang, setLang, t }`
+- El toggle de la nav cambia TODO el texto. Al agregar texto: **siempre en ambos idiomas**.
 
 ## Project Structure
 ```
-src/app/layout.tsx          # Archivo font, SEO metadata, lang="es"
-src/app/page.tsx            # LanguageProvider + composición de secciones
-src/app/globals.css         # Tailwind v4 + tokens
+src/app/layout.tsx           # Roboto, SEO metadata, Pixel
+src/app/page.tsx             # LanguageProvider + composición de secciones
+src/app/globals.css          # Tailwind v4 + tokens + sombras
+src/app/api/lead/route.ts    # POST del form: antibot + Telegram + Meta CAPI
 src/components/
-├── nav.tsx                 # Fija, transparente→blanca con blur al scroll >60px, hamburger móvil
-├── hero.tsx                # Negro, centrado. CrmWindow (HTML/CSS), BotPhone (chat), SidePhoto ×2
-├── trust.tsx               # Franja de 8 tecnologías
-├── services.tsx            # 6 tarjetas (grid 3×2), iconos lucide
-├── process.tsx             # 4 pasos numerados (cuadro negro)
-├── projects.tsx            # Handy Sales CRM destacado + Jeyma + "Tu proyecto aquí" (azul)
-├── testimonials.tsx        # 2 tarjetas (PLACEHOLDERS: Carlos M. / Ana R.)
-├── pricing.tsx             # 3 planes, el 2° "Más popular" (borde azul)
-├── faq.tsx                 # Acordeón, una abierta a la vez (estado openFaq)
-├── cta.tsx                 # Negro + botón azul + fantasma WhatsApp
-├── contact.tsx             # Form (éxito fake al enviar) + email/WhatsApp/Calendly
-├── footer.tsx              # Negro, columnas + social
-└── section-head.tsx        # Eyebrow + título + sub (compartido)
-src/lib/animations.ts       # Variants Framer Motion (fadeInUp, stagger…)
+├── nav.tsx                  # Fija, azul. z-100 (ojo al montar overlays)
+├── hero.tsx                 # 2 col. Capturas REALES de Handy + form de email
+├── trust.tsx                # Franja de tecnologías
+├── services.tsx             # Tarjetas de servicios
+├── service-features.tsx     # Servicios estrella; el de bots monta <BotChat/>
+├── bot-chat.tsx             # Mockup WhatsApp con textos REALES del bot + lead capturado
+├── process.tsx              # Pasos numerados
+├── projects.tsx             # Handy Sales (captura real) + Jeyma + Bots + "Tu proyecto aquí"
+├── social-proof.tsx         # (NO existe testimonials.tsx: se borró, eran placeholders)
+├── pricing.tsx              # Planes. Precios alineados al RAG del bot: $1,500 / $3,500
+├── faq.tsx                  # Acordeón (patrón reusable para el tab Ayuda del widget)
+├── cta.tsx · contact.tsx · footer.tsx · section-head.tsx · decor.tsx · pixel.tsx
+src/lib/
+├── animations.ts            # Variants Framer Motion (fadeInUp, staggerContainer, scaleIn)
+├── i18n.ts · language-context.tsx
+├── telegram.ts · meta-capi.ts · fbq.ts   # avisos de lead + tracking
 ```
 
-## Assets (public/images/) — generados con gemini-media (nano banana)
-- `hero-team.jpg` — foto equipo (hero izq, 250×372 slot)
-- `hero-client.jpg` — foto cliente con app (hero der)
-- `handysales-crm.jpg` — mockup dashboard CRM (proyecto destacado)
-- `jeyma-site.jpg` — mockup e-commerce Jeyma (recortado al hero del navegador)
-- Originales PNG 2K en `images/generated-src/` (no deployados)
-- Assets del diseño anterior (videos, logos DeliveryGo) en `images/archive/` (no deployados)
-- Prompts de regeneración: `PROMPTS-nano-banana.md` (Downloads)
+## Antibot del form (`api/lead/route.ts`)
+Honeypot + time-trap + rate-limit. Se agregó tras recibir spam real. **El widget de chat debe
+usar el MISMO modelo** (no reCAPTCHA): es lo acordado con el engine.
 
-## Branding
-- Marca: cuadro azul con "JS" + wordmark "JeShua Code" (componente inline en nav/footer)
-- El logo anterior (`logo-transparente.png`) quedó archivado
+## Assets (`public/images/`)
+- `real-handy-web.png` — captura REAL del panel de Handy Sales (2880×1800, ratio 16/10)
+- `real-handy-mobile.png` — captura REAL de la app móvil
+- `jeyma-site.jpg` — sitio de Jeyma
+- Logo con ® en `public/` (las variantes sin ® son viejas: **el logo lleva ®**)
+
+## Bot de Jeshua (contexto)
+El bot de WhatsApp está EN VIVO (repo `jeshua-bots`, VPS `hermes-vps`, `bots.jeshuasoftware.com`).
+Los textos de `bot-chat.tsx` y los precios de `pricing.tsx` salen de su RAG real: mantenerlos
+sincronizados. El engine ya tiene **canal web** (`/public/*` con SSE) para el widget de esta landing.
 
 ## Commands
 ```bash
-npm run dev    # localhost:3000
-npm run build  # genera out/
+npm run dev     # localhost:3000
+npm run build   # build de produccion
 ```
 
 ## Pending
-- [ ] Deploy to Azure Static Web Apps
-- [ ] WhatsApp real (placeholder: wa.me/5210000000000) — en `src/lib/i18n.ts`
-- [ ] Calendly real (placeholder: calendly.com/jeshuacode) — en `src/lib/i18n.ts`
-- [ ] Precios reales (referencias: $8,900 / $4,500 MXN)
-- [ ] Testimonios reales (Carlos M. / Ana R. son placeholders)
-- [ ] Form de contacto: hoy es éxito fake (static export, sin backend) — integrar servicio real
+- [ ] **Widget de chat** estilo Intercom (FASE 2 del plan): `src/components/chat/*`, contra
+      `NEXT_PUBLIC_HERMES_URL`. El engine ya expone el contrato.
+- [ ] `hola@jeshuasoftware.com` NO existe todavía, pero el RAG del bot ya lo da a los prospectos
+      y aparece en la política de privacidad del engine. Decidir buzón (Cloudflare Email Routing)
+      o cambiar el dato.
 - [ ] Links Legal (Privacidad/Términos) apuntan a "#"
-- [ ] SEO (robots.txt, sitemap) + custom domain
+- [ ] SEO (robots.txt, sitemap)
 
-## Design Agent Instructions
-
-### REGLA #1: SIEMPRE revisar diseños existentes antes de crear
-1. Usar `batch_get` para leer nodos similares existentes
-2. Copiar exactamente los mismos patrones (colores, iconos, tamaños)
-3. NO inventar estilos nuevos
-
-### REGLA #2: SIEMPRE avisar antes de gastar créditos AI de Pencil
-- `G(node, "ai", prompt)` = 18 créditos por imagen → **informar y preguntar antes**
-- `G(node, "stock", query)` = GRATIS (Unsplash) · `I()`, `U()`, `C()`, `R()`, `D()`, `M()` = GRATIS
-- (Para imágenes fotorrealistas/mockups usar el MCP gemini-media, es lo que prefiere el usuario)
+## Git
+- **NUNCA** Anthropic/Claude/Co-Authored-By en commits ni PRs. Autor siempre `jms`.
+- **NUNCA** push sin que el dueño lo pida. `main` está protegida: se va por PR y **él** mergea.
+- Commits en español, explicando el porqué (no el qué).
 
 ## Agent Configuration
-- **Haiku**: Búsquedas, validaciones, builds
-- **Sonnet**: Escribir/modificar código, tests, refactoring
-- **Opus**: Diseño de sistemas, decisiones críticas, UX/UI complejos
+- **Haiku**: búsquedas, validaciones, builds
+- **Sonnet**: escribir/modificar código, tests, refactoring
+- **Opus**: diseño de sistemas, decisiones críticas, UX/UI complejos

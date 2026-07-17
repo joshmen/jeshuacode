@@ -26,6 +26,41 @@ export interface Plan {
   popular: boolean;
 }
 
+/** Textos del widget de chat. Todo lo que el visitante lee ahi dentro. */
+export interface ChatDict {
+  launcherAria: string;
+  titulo: string;
+  subtitulo: string;
+  saludoBurbuja: string;
+  tabHome: string;
+  tabMensajes: string;
+  tabAyuda: string;
+  homeHola: string;
+  homeSub: string;
+  homeCta: string;
+  homeAtajos: string;
+  estadoEnLinea: string;
+  estadoFuera: string;
+  vuelveAhora: string;
+  vuelveHoy: string;
+  vuelveManana: string;
+  vuelveLunes: string;
+  botSiempre: string;
+  placeholder: string;
+  enviar: string;
+  escribiendo: string;
+  errorGenerico: string;
+  reintentar: string;
+  vacioMensajes: string;
+  pedirAsesor: string;
+  ayudaTitulo: string;
+  ayudaBuscar: string;
+  ayudaSinResultados: string;
+  ayudaPreguntarBot: string;
+  ayudaEnlaces: string;
+  cerrar: string;
+}
+
 export interface Faq {
   q: string;
   a: string;
@@ -133,6 +168,7 @@ export interface Dict {
   proofFacts: string[];
   plans: Plan[];
   faqs: Faq[];
+  chat: ChatDict;
 }
 
 const ES: Dict = {
@@ -366,6 +402,39 @@ const ES: Dict = {
       a: "Normalmente 50% para iniciar y 50% a la entrega. Aceptamos transferencia y pagos con tarjeta vía Stripe.",
     },
   ],
+  chat: {
+    launcherAria: "Abrir el chat con el asistente",
+    titulo: "Jeshua Software",
+    subtitulo: "Estás hablando con nuestro bot. Sí, uno de los que vendemos.",
+    saludoBurbuja: "¿Te ayudo con algo? Pregúntame precios, tiempos o lo que quieras.",
+    tabHome: "Inicio",
+    tabMensajes: "Mensajes",
+    tabAyuda: "Ayuda",
+    homeHola: "Hola 👋",
+    homeSub: "Pregúntale al bot lo que quieras. Responde al instante, a cualquier hora.",
+    homeCta: "Iniciar conversación",
+    homeAtajos: "O empieza por aquí:",
+    estadoEnLinea: "Respondemos ahora",
+    estadoFuera: "Fuera de horario",
+    vuelveAhora: "Hay alguien del equipo en línea.",
+    vuelveHoy: "El equipo entra hoy a las 9:00.",
+    vuelveManana: "El equipo vuelve mañana a las 9:00.",
+    vuelveLunes: "El equipo vuelve el lunes a las 9:00.",
+    botSiempre: "El bot te responde igual, 24/7.",
+    placeholder: "Escribe tu pregunta",
+    enviar: "Enviar",
+    escribiendo: "Escribiendo",
+    errorGenerico: "No pude responder. ¿Lo intentas de nuevo?",
+    reintentar: "Reintentar",
+    vacioMensajes: "Aquí aparecerán tus conversaciones.",
+    pedirAsesor: "Hablar con una persona",
+    ayudaTitulo: "Preguntas frecuentes",
+    ayudaBuscar: "Buscar en la ayuda",
+    ayudaSinResultados: "No encontré nada sobre eso.",
+    ayudaPreguntarBot: "Preguntarle al asistente",
+    ayudaEnlaces: "Ir a la página",
+    cerrar: "Cerrar el chat",
+  },
 };
 
 const EN: Dict = {
@@ -599,6 +668,39 @@ const EN: Dict = {
       a: "Usually 50% to start and 50% on delivery. We accept bank transfer and card payments via Stripe.",
     },
   ],
+  chat: {
+    launcherAria: "Open chat with the assistant",
+    titulo: "Jeshua Software",
+    subtitulo: "You are talking to our bot. Yes, one of the ones we sell.",
+    saludoBurbuja: "Need a hand? Ask me about pricing, timelines or anything else.",
+    tabHome: "Home",
+    tabMensajes: "Messages",
+    tabAyuda: "Help",
+    homeHola: "Hi 👋",
+    homeSub: "Ask the bot anything. It answers instantly, any time.",
+    homeCta: "Start a conversation",
+    homeAtajos: "Or start here:",
+    estadoEnLinea: "We reply now",
+    estadoFuera: "Outside business hours",
+    vuelveAhora: "Someone from the team is online.",
+    vuelveHoy: "The team starts today at 9:00.",
+    vuelveManana: "The team is back tomorrow at 9:00.",
+    vuelveLunes: "The team is back on Monday at 9:00.",
+    botSiempre: "The bot answers anyway, 24/7.",
+    placeholder: "Type your question",
+    enviar: "Send",
+    escribiendo: "Typing",
+    errorGenerico: "I could not reply. Want to try again?",
+    reintentar: "Try again",
+    vacioMensajes: "Your conversations will show up here.",
+    pedirAsesor: "Talk to a person",
+    ayudaTitulo: "Frequently asked questions",
+    ayudaBuscar: "Search help",
+    ayudaSinResultados: "I found nothing about that.",
+    ayudaPreguntarBot: "Ask the assistant",
+    ayudaEnlaces: "Go to the page",
+    cerrar: "Close chat",
+  },
 };
 
 export const dictionaries: Record<Lang, Dict> = { es: ES, en: EN };

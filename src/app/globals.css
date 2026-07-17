@@ -62,3 +62,24 @@ body {
 .card-shadow {
   box-shadow: 0 4px 16px rgba(16, 24, 40, 0.08);
 }
+
+/* Scroll del widget de chat: el nativo de Windows es una barra gris gruesa que rompe
+   el panel. Se adelgaza sin ocultarlo: una barra invisible deja al usuario sin saber
+   que hay mas conversacion arriba. */
+.chat-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #d0d5dd transparent;
+}
+.chat-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.chat-scroll::-webkit-scrollbar-thumb {
+  background: #d0d5dd;
+  border-radius: 999px;
+}
+.chat-scroll::-webkit-scrollbar-thumb:hover {
+  background: #98a2b3;
+}
