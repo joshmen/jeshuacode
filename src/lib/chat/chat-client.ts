@@ -175,10 +175,17 @@ export async function startConversation(): Promise<StartConversationResult> {
   return { publicId, visitorId };
 }
 
-/** Envia un mensaje y consume el stream. onToken por cada delta, onDone al cerrar. */
+/**
+ * Envia un mensaje y consume el stream. onToken por cada delta, onDone al cerrar.
+ *
+ * `lang` es el idioma de la interfaz. El bot responde en el idioma en que le ESCRIBEN; esto
+ * solo desempata cuando el mensaje es demasiado corto para saberlo ("ok", "hola"). Sin esto,
+ * el engine caia a su default y contestaba en español a quien tenia la web en ingles.
+ */
 export async function sendMessage(
   publicId: string,
   text: string,
+  lang?: string,
   callbacks: SendCallbacks = {}
 ): Promise<void> {
   const { onToken, onDone, onError } = callbacks;
@@ -188,7 +195,7 @@ export async function sendMessage(
       {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "text/event-stream" },
-        body: JSON.stringify({ message: text }),
+        body: JSON.stringify({ message: text, lang }),
       }
     );
 

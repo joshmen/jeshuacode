@@ -11,6 +11,7 @@ import {
   type ReceiveSubscription,
 } from "./chat-client";
 import { chatStorage, type StoredMessage } from "./chat-storage";
+import { useLanguage } from "../language-context";
 
 export type ChatTab = "home" | "mensajes" | "ayuda";
 
@@ -39,6 +40,14 @@ function nuevoId(): string {
 }
 
 export function useChat(): UseChat {
+  // El idioma que el visitante eligio en la nav. Se le pasa al bot para que no conteste en
+  // español a quien esta leyendo la web en ingles.
+  const { lang } = useLanguage();
+  const langRef = useRef(lang);
+  useEffect(() => {
+    langRef.current = lang;
+  }, [lang]);
+
   const [mensajes, setMensajes] = useState<StoredMessage[]>([]);
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -149,7 +158,7 @@ export function useChat(): UseChat {
       const intentar = async (reintento = false): Promise<void> => {
         const publicId = await asegurarConversacion();
         await new Promise<void>((resolve, reject) => {
-          sendMessage(publicId, limpio, {
+          sendMessage(publicId, limpio, langRef.current, {
             onToken: pintarDelta,
             onDone: () => resolve(),
             onError: (e) => reject(e),
