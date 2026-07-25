@@ -86,7 +86,7 @@ export default function Nav() {
           {t.navCont}
         </a>
         <a
-          href="#contacto"
+          href="https://admin.jeshuasoftware.com/signup"
           className="inline-flex items-center justify-center whitespace-nowrap rounded-[11px] btn-primary px-[22px] py-[13px] text-[15px] font-bold leading-none transition-all hover:-translate-y-px"
         >
           {t.navCta}
@@ -123,7 +123,7 @@ export default function Nav() {
           <div className="mt-2 flex items-center gap-4 px-3">
             <LangToggle onDark={false} />
             <a
-              href="#contacto"
+              href="https://admin.jeshuasoftware.com/signup"
               onClick={() => setOpen(false)}
               className="inline-flex flex-1 items-center justify-center whitespace-nowrap rounded-[11px] btn-primary px-[22px] py-[13px] text-[15px] font-bold leading-none"
             >
