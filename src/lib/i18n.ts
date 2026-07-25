@@ -222,7 +222,7 @@ const ES: Dict = {
   projTitle: "Trabajo que habla por nosotros",
   projSub: "Algunos de los productos que hemos construido y estamos construyendo.",
   featBadge: "En producción",
-  featName: "Handy Sales CRM",
+  featName: "Repartya",
   featTag: "CRM de ventas en campo",
   featDesc:
     "Plataforma completa para equipos de ventas: pedidos, rutas, clientes, facturación (CFDI) y un bot de atención. App móvil + panel web + API.",
@@ -488,7 +488,7 @@ const EN: Dict = {
   projTitle: "Work that speaks for itself",
   projSub: "Some of the products we have built and are building.",
   featBadge: "In production",
-  featName: "Handy Sales CRM",
+  featName: "Repartya",
   featTag: "Field sales CRM",
   featDesc:
     "Complete platform for sales teams: orders, routes, customers, invoicing (CFDI) and a support bot. Mobile app + web panel + API.",

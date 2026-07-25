@@ -16,12 +16,12 @@ function CrmWindow() {
         <span className="h-[10px] w-[10px] rounded-full bg-[#febc2e]" />
         <span className="h-[10px] w-[10px] rounded-full bg-[#28c840]" />
         <div className="ml-3 hidden h-[24px] max-w-[320px] flex-1 items-center rounded-md border border-[#E4E7EC] bg-white px-3 text-[11px] font-medium text-[#98A2B3] sm:flex">
-          app.handysuites.mx/dashboard
+          app.repartya.com/dashboard
         </div>
       </div>
       <Image
         src="/images/real-handy-web.png"
-        alt="Panel de Handy Sales: ventas del dia, pedidos, visitas y clientes activos"
+        alt="Panel de Repartya: ventas del dia, pedidos, visitas y clientes activos"
         width={1440}
         height={900}
         priority
@@ -37,7 +37,7 @@ function PhoneMock() {
     <div className="absolute -bottom-10 -right-4 z-3 hidden w-[150px] overflow-hidden rounded-[24px] border-[6px] border-[#0F1115] bg-[#0F1115] shadow-[0_30px_60px_rgba(16,24,40,.45)] md:block lg:w-[172px]">
       <Image
         src="/images/real-handy-movil.png"
-        alt="App movil de Handy Sales: visitas del dia, pedidos y ventas del vendedor"
+        alt="App movil de Repartya: visitas del dia, pedidos y ventas del vendedor"
         width={646}
         height={1400}
         className="block w-full rounded-[18px]"

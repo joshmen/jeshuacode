@@ -48,7 +48,7 @@ export default function Projects() {
           <div className="relative mt-8 aspect-[16/10] w-full overflow-hidden rounded-2xl border border-line bg-[#F2F4F7]">
             <Image
               src="/images/real-handy-web.png"
-              alt="Panel real de Handy Sales: ventas del dia, pedidos, visitas y cartera por cobrar"
+              alt="Panel real de Repartya: ventas del dia, pedidos, visitas y cartera por cobrar"
               fill
               sizes="(max-width: 1024px) 100vw, 1120px"
               className="object-cover object-top"
