@@ -269,7 +269,7 @@ const ES: Dict = {
   footLegal: "Legal",
   footPriv: "Privacidad",
   footTerms: "Términos",
-  footRights: "© 2026 Jeshua Software. Todos los derechos reservados.",
+  footRights: "© 2026 Jeshua Software, nombre comercial de Josué Mendoza Segovia. Todos los derechos reservados.",
   steps: [
     {
       t: "Descubrimiento",
@@ -535,7 +535,7 @@ const EN: Dict = {
   footLegal: "Legal",
   footPriv: "Privacy",
   footTerms: "Terms",
-  footRights: "© 2026 Jeshua Software. All rights reserved.",
+  footRights: "© 2026 Jeshua Software, a trade name of Josué Mendoza Segovia. All rights reserved.",
   steps: [
     {
       t: "Discovery",
