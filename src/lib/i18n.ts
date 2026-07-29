@@ -162,6 +162,7 @@ export interface Dict {
   footPriv: string;
   footTerms: string;
   footRights: string;
+  footLegalName: string;
   steps: Step[];
   feats: Feature[];
   proofStats: ProofStat[];
@@ -269,7 +270,8 @@ const ES: Dict = {
   footLegal: "Legal",
   footPriv: "Privacidad",
   footTerms: "Términos",
-  footRights: "© 2026 Jeshua Software, nombre comercial de Josué Mendoza Segovia. Todos los derechos reservados.",
+  footRights: "© 2026 Jeshua Software. Todos los derechos reservados.",
+  footLegalName: "Jeshua Software es un nombre comercial de Josué Mendoza Segovia.",
   steps: [
     {
       t: "Descubrimiento",
@@ -535,7 +537,8 @@ const EN: Dict = {
   footLegal: "Legal",
   footPriv: "Privacy",
   footTerms: "Terms",
-  footRights: "© 2026 Jeshua Software, a trade name of Josué Mendoza Segovia. All rights reserved.",
+  footRights: "© 2026 Jeshua Software. All rights reserved.",
+  footLegalName: "Jeshua Software is a trade name of Josué Mendoza Segovia.",
   steps: [
     {
       t: "Discovery",

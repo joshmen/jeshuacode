@@ -93,6 +93,10 @@ export default function Footer() {
             ))}
           </div>
         </div>
+
+        <div className="mt-4 text-[11px] font-normal leading-relaxed text-white/30">
+          {t.footLegalName}
+        </div>
       </div>
     </footer>
   );
