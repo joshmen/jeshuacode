@@ -51,7 +51,7 @@ const ES: PrivacyDict = {
       heading: "5. Seguridad",
       bullets: [
         "Toda la comunicación entre tu navegador y nuestros servidores viaja cifrada (HTTPS).",
-        "Las credenciales de acceso a los proveedores que usamos (WhatsApp, inteligencia artificial, etc.) se guardan cifradas.",
+        "Las credenciales de WhatsApp de cada negocio se guardan cifradas; el resto de credenciales de proveedores se gestionan como secretos de infraestructura con acceso restringido.",
         "El acceso a los datos está restringido a quien lo necesita para operar el servicio.",
       ],
     },
@@ -124,7 +124,7 @@ const EN: PrivacyDict = {
       heading: "5. Security",
       bullets: [
         "All communication between your browser and our servers travels encrypted (HTTPS).",
-        "Access credentials for the providers we use (WhatsApp, artificial intelligence, etc.) are stored encrypted.",
+        "Each business's WhatsApp credentials are stored encrypted; other provider credentials are managed as infrastructure secrets with restricted access.",
         "Access to the data is restricted to whoever needs it to operate the service.",
       ],
     },

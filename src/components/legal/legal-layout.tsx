@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * legal-layout.tsx — armazon compartido de /privacidad y /terminos.
+ * legal-layout.tsx: armazon compartido de /privacidad y /terminos.
  *
  * Estas paginas viven fuera del LanguageProvider de la landing (page.tsx lo monta solo
  * alrededor de Home, no en el layout raiz), asi que traen su propio estado de idioma local
