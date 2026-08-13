@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Linkedin, Github } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 
@@ -65,14 +66,14 @@ export default function Footer() {
             </div>
             <ul className="mt-[18px] flex flex-col gap-3">
               <li>
-                <a href="#" className="text-[14.5px] font-medium text-white/82 hover:text-white">
+                <Link href="/privacidad" className="text-[14.5px] font-medium text-white/82 hover:text-white">
                   {t.footPriv}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-[14.5px] font-medium text-white/82 hover:text-white">
+                <Link href="/terminos" className="text-[14.5px] font-medium text-white/82 hover:text-white">
                   {t.footTerms}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
